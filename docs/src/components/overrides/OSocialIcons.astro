@@ -1,0 +1,13 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+const isHomePage = Astro.props.slug === '';
+const isAboutPage = Astro.props.slug === 'about';
+import { globals } from '../../globals';
+---
+
+{ (isHomePage || isAboutPage) && <a class="text-[var(--sl-color-text-accent)] no-underline font-semibold lg:mr-1" href="/guide/getting-started">Docs</a> }
+<a class="text-[var(--sl-color-text-accent)] no-underline font-semibold lg:mr-1" href="/about">About</a>
+
+<div class="hidden lg:block border border-[var(--sl-color-gray-5)] text-[var(--sl-color-gray-2)] rounded px-2.5 bg-[var(--sl-color-black)]">{globals.latestVersion}</div>
+<Default {...Astro.props}><slot /></Default>

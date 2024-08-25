@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  title: string;
+  icon?: string;
+  iconColor?: string;
+  classAppend?: string;
+}
+
+const {
+    title,
+    icon = "mdi:star-face",
+    iconColor = "text-[var(--sl-color-text-accent)]",
+    classAppend = "",
+} = Astro.props;
+---
+
+<div class:list={[`kstd-highlight !mt-0 flex flex-row`].concat(classAppend.split(/\s+/))}>
+    <div class="flex justify-center shrink-0">
+        <div class="icon-outer mr-3 min-[800px]:mr-4 rtl:ml-2 rtl:md:ml-2 rtl:mr-0 !mt-0">
+            <Icon name={icon} class:list={`icon min-[800px]:!mt-0.5 w-8 h-8 min-[800px]:w-9 min-[800px]:h-9 ${iconColor}`}/>
+        </div>
+    </div>
+    <div class="[&>div.content>p]:!mt-2 !mt-0.5 md:!mt-1">
+        <div class="title font-bold text-lg">{title}</div>
+        <div class="content !mt-0">
+            <slot />
+        </div>
+    </div>
+</div>

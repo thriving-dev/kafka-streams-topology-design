@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode colors. */
+:root {
+    --sl-color-accent-low: #17264f;
+    --sl-color-accent: #3369ff;
+    --sl-color-accent-high: #b3c7ff;
+    /*--sl-color-accent-low: #0f2a21;*/
+    /*--sl-color-accent: #007c61;*/
+    /*--sl-color-accent-high: #91cfb7;*/
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #efedeb;
+    --sl-color-gray-2: #c4c1bf;
+    --sl-color-gray-3: #8f8a86;
+    --sl-color-gray-4: #5c5753;
+    --sl-color-gray-5: #3b3733;
+    --sl-color-gray-6: #2a2622;
+    --sl-color-gray-7: #1c1914;
+    --sl-color-black: #1a1816;
+    --sl-color-bg-opt-1: #292524;
+}
+/* Light mode colors. */
+:root[data-theme='light'] {
+    --sl-color-accent-low: #cfd4fc;
+    --sl-color-accent: #3d50f5;
+    --sl-color-accent-high: #0f1c8a;
+    /*--sl-color-accent-low: #c6ddd4;*/
+    /*--sl-color-accent: #008438;*/
+    /*--sl-color-accent-high: #228e50;*/
+    --sl-color-white: #1b1714;
+    --sl-color-gray-1: #2d251e;
+    --sl-color-gray-2: #3e372f;
+    --sl-color-gray-3: #5f564e;
+    --sl-color-gray-4: #938a81;
+    --sl-color-gray-5: #c6c1bc;
+    --sl-color-gray-6: #edebe9;
+    --sl-color-gray-7: #f8f6f4;
+    --sl-color-black: #ffffff;
+    --sl-color-bg-opt-1: #f5f5f4;
+}
+
+
+/*
+Add additional Tailwind styles to this file, for example with @layer:
+https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
+*/
+
+.sidebar-pane {
+   @apply h-full !pb-[77px] h-auto;
+}
+
+.right-sidebar {
+    @apply h-full min-[1152px]:!pb-[77px];
+}
+
+.sidebar-content {
+    @apply h-auto;
+}
+
+.site-title {
+    @apply gap-3 text-[var(--sl-color-white)];
+}
+
+.social-icons::after {
+    display: none;
+}
+
+.tagline {
+    @apply text-lg lg:text-2xl;
+}
+
+h1 {
+    @apply text-[56px];
+}
+
+.action {
+    @apply rounded-lg px-3.5 md:px-4 py-2 md:py-2.5 font-medium !text-[var(--sl-color-white)];
+}
+
+.action.primary {
+    @apply !text-[var(--sl-color-black)];
+}
+
+.actions {
+    @apply gap-x-4 lg:gap-x-8 gap-y-4 flex-wrap justify-center min-[800px]:justify-normal;
+}
+
+a {
+    @apply underline underline-offset-1 decoration-1 text-[var(--sl-color-text-accent)] decoration-[#4f46e566] dark:decoration-[#c7d2fe66];
+}
+
+/* starlight always adds a <ContentPanel> for 'splash' template without 'hero'.
+ * This is a hack to hide the content-panel, without overriding the entire <Page> component...
+ */
+.content-panel:has(>div>div.hide-content-panel) {
+    @apply hidden;
+}
+
+body {
+    overscroll-behavior-y: none;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+code {
+    @apply rounded;
+}
+
+.medium-zoom-overlay {
+    z-index: 70;
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+    opacity: 95%;
+}
+
+.medium-zoom-overlay + img {
+    z-index: 71;
+}

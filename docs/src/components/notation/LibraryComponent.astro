@@ -1,0 +1,53 @@
+---
+import type {ImageMetadata} from 'astro'
+import { Image } from "astro:assets";
+
+interface Props {
+  name: string;
+  width: number;
+  img?: any;
+  description?: string;
+  classAppend?: string;
+}
+
+const {
+  name,
+  width = 100,
+  img = null,
+  description = "Description coming soon...",
+  classAppend = "",
+} = Astro.props;
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+const version = '1.0.0-alpha.4'
+const assetsPath = `../../assets/lib/components/${version}`
+const images = import.meta.glob<{ default: ImageMetadata }>("../../assets/lib/components/1.0.0-alpha.4/*");
+const image = img ? img() : images[`${assetsPath}/${name}.svg`]()
+---
+
+<section class:list={[`kstd-library-component`].concat(classAppend.split(/\s+/))}>
+    <div class="flex gap-4">
+        <div class="shrink-0">
+            {image && (
+                <Image src={image}
+                       alt={`The '${name}' component of the KSTD Excalidraw library`}
+                       width={width}
+                       class="rounded-lg"/>
+            )}
+        </div>
+        <div class="!mt-1" set:html={description} />
+    </div>
+
+    <slot/>
+
+    {Astro.slots.has('advanced') && (
+        <h4>Advanced</h4>
+        <slot name="advanced" />
+    )}
+
+    <!--<h4>Usage Example</h4>-->
+    <!--<p>coming soon...</p>-->
+</section>

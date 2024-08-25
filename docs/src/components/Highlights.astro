@@ -1,0 +1,14 @@
+---
+interface Props {
+  classAppend?: string;
+}
+
+const {
+  classAppend = "",
+} = Astro.props;
+---
+
+<div class:list={[`kstd-highlights slot grid grid-cols-1 min-[800px]:grid-cols-2 gap-x-8 gap-y-5 md:gap-y-10`].concat(classAppend.split(/\s+/))}>
+    <slot />
+</div>
+

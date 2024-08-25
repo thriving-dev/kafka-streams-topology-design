@@ -1,0 +1,21 @@
+---
+---
+
+<script>
+  import mediumZoom from 'medium-zoom/dist/pure';
+  // console.log('mediumZoom::init')
+  window.addEventListener("load", function(){
+    // ....
+    // console.log('mediumZoom::load')
+    const zoom = mediumZoom('.images-zoomable * img', {
+      margin: 12,
+    });
+
+    // https://github.com/francoischalifour/medium-zoom/issues/147#issuecomment-1616038375
+    zoom.on('open', event => {
+      const targetElement = event.target as HTMLStyleElement;
+      targetElement.style.height="auto";
+      targetElement.style.width="auto";
+    });
+  });
+</script>

@@ -1,0 +1,80 @@
+---
+import Panel from './Panel.astro'
+import { Image } from 'astro:assets';
+import type {ImageMetadata} from 'astro'
+
+interface Props {
+  classAppend?: string;
+  titleTop?: string;
+  title?: string;
+  tagline?: string;
+  darkImage?: string;
+  lightImage?: string;
+  imageAlt?: string;
+}
+
+const {
+  classAppend = "",
+  titleTop = "",
+  title = "",
+  tagline = "",
+  darkImage = "",
+  lightImage = "",
+  imageAlt = "",
+} = Astro.props;
+
+const imageAttrs = {
+  loading: 'eager' as const,
+  decoding: 'async' as const,
+  width: 400,
+  height: 400,
+  alt: imageAlt || '',
+}
+
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/*");
+const darkImageAsset = darkImage ? images[darkImage]() : null
+const lightImageAsset = lightImage ? images[lightImage]() : null;
+---
+
+<Panel classAppend={ ''
+  + 'lg:[&>div>div.panel-title>h1.title]:text-[56px] '
+  + '[&>div>div.panel-title>div.title-top]:!capitalize [&>div>div.panel-title>div.title-top]:!mb-0 [&>div>div.panel-title>div.title-top]:text-xl '
+  + '[&>div>div.panel-title>div.tagline]:!text-lg [&>div>div>div.panel-title>div.tagline]:md:!text-xl '
+  + '[&>div>div.panel-title]:!mb-6 '
+  + 'text-center min-[800px]:text-left '
+  + 'grid min-[800px]:grid-cols-[_7fr,_4fr] gap-8 '
+  + ' ' + classAppend}
+       {titleTop}
+       {title}
+       {tagline}
+       titleH1>
+  <div slot="pretitle" class="mx-auto min-[800px]:order-2 px-12 min-[800px]:px-0 min-[900px]:px-2 min-[1000px]:px-8 pt-0 min-[800px]:pt-8 -mt-8 min-[800px]:mt-0 -mb-6 min-[800px]:mb-0">
+    {
+      darkImageAsset && (
+        <Image
+                src={darkImageAsset}
+                {...imageAttrs}
+                class:list={{ 'light:sl-hidden': Boolean(lightImage) }}
+        />
+      )
+    }
+    { lightImageAsset && <Image src={lightImageAsset} {...imageAttrs} class="dark:sl-hidden" /> }
+  </div>
+  <slot />
+</Panel>
+
+<style>
+    .action {
+        gap: 0.5em;
+        align-items: center;
+        border-radius: 999rem;
+        padding: 0.5rem 1.125rem;
+        color: var(--sl-color-white);
+        line-height: 1.1875;
+        text-decoration: none;
+        font-size: var(--sl-text-sm);
+    }
+    .action.minimal {
+        padding-inline: 0;
+    }
+</style>

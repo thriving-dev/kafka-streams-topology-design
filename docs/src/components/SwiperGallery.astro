@@ -1,0 +1,100 @@
+---
+interface Props {
+    name?: string;
+    classAppend?: string;
+}
+
+const {
+    name = "default",
+    classAppend = "",
+} = Astro.props;
+---
+
+<div class:list={[`kstd-swiper-gallery !mt-0 flex flex-row`].concat(classAppend.split(/\s+/))}>
+    <div class="swiper-container">
+        <div class={"swiper " + name}>
+            <div class="swiper-wrapper [&>div.swiper-slide>img]:w-full [&>div.swiper-slide>img]:object-contain [&>div.swiper-slide]:!mt-0">
+                <slot />
+                <!--<div class="swiper-slide">-->
+                <!--    <Image src={slide1} alt="Example 1"/>-->
+                <!--</div>-->
+                <!--<div class="swiper-slide">-->
+                <!--    <Image src={slide2} alt="Example 2"/>-->
+                <!--</div>-->
+                <!--<div class="swiper-slide">-->
+                <!--    <Image src={slide3} alt="Example 3"/>-->
+                <!--</div>-->
+                <!--<div class="swiper-slide">-->
+                <!--    <Image src={slide4} alt="Example 4"/>-->
+                <!--</div>-->
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import Swiper from 'swiper';
+    import {Navigation, Autoplay, Pagination} from 'swiper/modules';
+
+    console.log('ASD1')
+    window.addEventListener("load", function(){
+        console.log('ASD2')
+        new Swiper(String(`.swiper`), {
+            modules: [Navigation, Autoplay, Pagination],
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
+
+<style>
+    .swiper-container {
+        position: relative;
+        //height: 400px;
+        width: 100%;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper.thumbs {
+        width: 100%;
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        margin-top: -22px !important;
+        color: var(--sl-color-text-accent);
+        /* margin-top: calc(0px -(var(--swiper-navigation-size) / 2)) !important; */
+    }
+</style>
