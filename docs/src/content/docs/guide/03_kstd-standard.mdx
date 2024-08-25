@@ -1,0 +1,50 @@
+---
+title: KSTD Standard
+description: TODO
+slug: guide/kstd-standard
+sidebar:
+  order: 3
+---
+
+# {frontmatter.title}
+
+*Work in progress...
+
+## Layout and Building Blocks
+
+Coming soon...
+
+
+## Orientation
+> TLDR: **'left to right'**
+
+KSTD recommends, but does not mandate a certain orientation or direction, but the library was created to work best for a 'left to right'
+direction of data flows.
+
+All examples provided are created in landscape orientation and show data flows from left (sources) to the right (sinks).
+
+## Naming Conventions
+
+### Topology Name
+Recommended to name after the `APPLICATION_ID` (to be) used by the application.
+
+### Processing Steps
+
+Naming processors and processing steps in a Kafka Streams topology is more than just a best practice; it’s a critical step in making your stream processing application maintainable, debuggable, and observable. It helps to ensure that your topology is understandable, both for humans and for the tools that interact with it, throughout the application’s lifecycle.
+
+1. **Debugging and Monitoring:** Named processors make logs, metrics, and error messages clearer, helping to trace issues and bottlenecks effectively.
+1. **Observability:** Custom metrics and visualization tools use processor names, enhancing insights into performance and data flow.
+1. **Code Clarity:** Meaningful names improve code readability, making it easier to understand and maintain complex topologies.
+1. **Refactoring:** Named steps simplify topology evolution and refactoring without affecting other parts.
+1. **Error Handling:** Enables more targeted exception handling.
+1. **Testing:** Facilitates focused and efficient testing of specific topology components.
+1. **Collaboration:** Improves communication between teams by providing clear references to specific steps.
+1. **Business Alignment:** Names can reflect business logic, making the topology more intuitive and aligned with business processes.
+
+[//]: # (TODO: example of `Named` Processor/Join/Aggregation)
+
+### State Stores
+State stores in Kafka Streams don’t always have to be named, but doing so is often beneficial, especially in more
+complex applications, for interactive queries, and for improving maintainability and observability.
+
+[//]: # (TODO: example of using `Materialized` Processor/Join/Aggregation)

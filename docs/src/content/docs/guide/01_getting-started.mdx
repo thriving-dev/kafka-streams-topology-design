@@ -1,0 +1,73 @@
+---
+title: Getting Started
+description: Simple instructions to setup the work environment by installing the KSTD component library to Excalidraw.
+slug: guide/getting-started
+sidebar:
+  order: 1
+---
+
+import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
+import { TwoCols } from '/src/components';
+import { globals } from '../../../globals';
+
+# {frontmatter.title}
+
+To fully explore the KSTD design standard, we'll start by setting up the work environment by adding the
+component library to the drawing tool Excalidraw.
+
+## Installation
+
+**Step 1:** To install the Excalidraw library for this browser, **click** the following button
+
+
+<div class="sl-flex">
+    <CallToAction attrs={{class: "minimal !px-4", target: "_blank"}}
+                  link={globals.lib.install}
+                  icon={{type: 'icon', name: 'external'}}
+                  variant="primary"
+                  set:html="Install"/>
+</div>
+
+**Step 2:** Excalidraw will open in your browser, and ask for _confirmation_.
+> "This will add _n_ shape(s) to your library. Are you sure?".
+
+Approve with **OK**.
+
+### Verify the Import
+
+<TwoCols>
+<div class="!mt-4">
+    - Once confirmed, you should see the shapes or icons from the library appear in the Library panel.
+    - You can now drag and drop these items onto your canvas.
+</div>
+<div class="flex justify-center items-center [&>*>img]:w-64">
+    ![Screenshot showing the successfully installed KSTD library in the Exaclidraw app.](../../../assets/guide/installed-excalidraw-library.png)
+</div>
+</TwoCols>
+
+### Install Manually
+
+If this is not working for you, here are some simple steps to manually install the KSTD Excalidraw library:
+
+**Step 1: Download the Library from GitHub**
+
+Go to the repository ['./libs'](https://github.com/thriving-dev/kafka-streams-topology-design/tree/main/libs)
+and download the latest version.
+
+**Step 2: Open Excalidraw**
+
+- Go to the [Excalidraw website](https://excalidraw.com/).
+- You will see a blank canvas where you can start drawing or editing.
+
+**Step 3: Import the Library**
+
+- Open the Library Panel:
+  - Click on the "Library" button (looks like a book) located on the top-right.
+- Import Library:
+  - In the Library panel, click on the "Three Dots" button (right to "Browse libraries").
+  - Click "Open"
+  - Choose the `.excalidrawlib` file you downloaded in Step 1.
+- Verify the Import:
+  - Once the file is loaded, you should see the shapes or icons from the library appear in the Library panel.
+  - You can now drag and drop these items onto your canvas.
+

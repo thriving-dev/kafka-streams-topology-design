@@ -1,0 +1,46 @@
+---
+import slugify from 'slugify'
+
+interface Props {
+    classAppend?: string;
+    titleTop?: string;
+    title?: string;
+    tagline?: string;
+    centered?: boolean;
+    titleH1?: boolean;
+}
+
+const {
+    classAppend = "",
+    titleTop = "",
+    title = "",
+    tagline = "",
+    centered = false,
+    titleH1 = false,
+} = Astro.props;
+---
+
+<section class:list={[`kstd-panel py-8 md:py-16 !my-0`].concat(classAppend.split(/\s+/))}>
+    <slot name="pretitle" />
+    <div>
+        { (titleTop || title || tagline) && (
+            <div class="panel-title mb-8 md:mb-10" class:list={{'text-center': centered}}>
+                { titleTop &&
+                  <div class="title-top text-lg uppercase text-[var(--sl-color-text-accent)] font-semibold -mb-1" set:html={titleTop} />
+                }
+                { (title && titleH1) ? (
+                  <h1 id={slugify(title, {lower: true})} class="title !mt-0" set:html={title} />
+                ) : (
+                  <h2 id={slugify(title, {lower: true})} class="title !mt-0" set:html={title} />
+                )}
+                { tagline &&
+                  <div class:list={{
+                      "tagline !text-lg !mt-3": true,
+                      "px-4 md:px-16 lg:px-32": centered,
+                  }} set:html={tagline} />
+                }
+            </div>
+        )}
+        <slot />
+    </div>
+</section>

@@ -1,0 +1,23 @@
+---
+title: Windowing
+description: TODO
+slug: notation/windowing
+sidebar:
+  order: 5
+---
+
+import LibraryComponent from "../../../components/notation/LibraryComponent.astro";
+
+# {frontmatter.title}
+
+> Windowing allows you to bucket stateful operations by time, without which your aggregations would endlessly accumulate.
+> A window gives you a snapshot of an aggregate within a given timeframe, and can be set as hopping, tumbling, session, or sliding.
+
+Reference: https://developer.confluent.io/courses/kafka-streams/windowing/
+
+## Components
+
+### Windowed
+<LibraryComponent name="windowed" width={140}
+                  description="Tumbling, Sliding, Hopping, Session"/>
+

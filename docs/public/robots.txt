@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kstd.thriving.dev/sitemap-index.xml

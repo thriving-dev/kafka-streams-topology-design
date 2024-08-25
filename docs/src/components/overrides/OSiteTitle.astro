@@ -1,0 +1,15 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+
+const siteTitleMobile = "KS Topology Design"
+const { ...props } = Astro.props;
+props.siteTitle = siteTitleMobile
+---
+
+<div class="!m-0 hidden min-[800px]:block">
+  <Default {...Astro.props}/>
+</div>
+<div class="!m-0 min-[800px]:hidden">
+  <Default {...props} />
+</div>

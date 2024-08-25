@@ -1,0 +1,27 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+---
+
+<div class="kstd-footer relative z-10 bg-[var(--sl-color-bg-nav)] border-t border-[var(--sl-color-hairline-shade)] py-4 px-6">
+  <!--<div class="max-w-[1080px] mx-auto text-sm relative flex items-bottom justify-between mt-3 w-full">-->
+  <div class="text-sm flex flex-wrap gap-y-0.5 mt-1 md:gap-y-0">
+      <div class="flex-none text-md font-medium">Kafka Streams Topology Design</div>
+      <div class="grow" />
+      <div class="flex-none flex gap-3 md:gap-3 text-md [&>a]:text-[var(--sl-color-text)]">
+        <SocialIcons {...Astro.props}/>
+      </div>
+      <div class="break" />
+      <div class="flex-none">
+        <a target="_blank" class="text-[var(--sl-color-text)]" href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a>
+        {new Date().getFullYear() > 2024 ? '2024-' : ''}{ new Date().getFullYear() }
+        © <a target="_blank" class="text-[var(--sl-color-text)]" href="https://thriving.dev">Thriving.dev</a>
+      </div>
+      <div class="grow" />
+      <div class="flex-none flex gap-4 font-semibold [&>a]:text-[var(--sl-color-text)]">
+        <a href="/guide/getting-started/">Docs</a>
+        <a href="/about/">About</a>
+      </div>
+    </div>
+  </div>
+</div>
