@@ -122,3 +122,36 @@ code {
 .medium-zoom-overlay + img {
     z-index: 71;
 }
+
+
+/* Fancybox class customisations */
+.fancybox__slide {
+    @apply !p-4;
+}
+
+.fancybox-image {
+    @apply rounded;
+}
+
+.f-carousel__thumbs {
+    @apply !mt-0 md:!mt-4;
+}
+
+.f-carousel__nav {
+    @apply !mt-0;
+}
+
+.f-carousel__slide {
+    @apply !mt-0 flex;
+}
+
+.f-button {
+    @apply !mt-0;
+}
+.f-carousel__dots {
+    @apply [&_button]:!mb-0;
+}
+
+/*astro-fancy-carousel {*/
+/*    @apply !h-[498px];*/
+/*}*/

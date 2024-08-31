@@ -13,7 +13,7 @@ export default defineConfig({
     logo: {
       light: '/src/assets/logo1_M.png',
       dark: '/src/assets/logo1_M.png',
-      replacesTitle: false
+      replacesTitle: false,
     },
     social: {
       linkedin: 'https://www.linkedin.com/in/hartmut-co-uk/',
@@ -23,13 +23,13 @@ export default defineConfig({
     sidebar: [{
       label: 'Guide',
       autogenerate: {
-        directory: 'guide'
-      }
+        directory: 'guide',
+      },
     }, {
       label: 'Notation',
       autogenerate: {
-        directory: 'notation'
-      }
+        directory: 'notation',
+      },
     }],
     components: {
       PageFrame: './src/components/overrides/OPageFrame.astro',
@@ -38,20 +38,25 @@ export default defineConfig({
       SocialIcons: './src/components/overrides/OSocialIcons.astro',
       Footer: './src/components/overrides/OFooter.astro',
       ThemeProvider: './src/components/overrides/OThemeProvider.astro',
-      ThemeSelect: './src/components/overrides/OThemeSelect.astro'
+      ThemeSelect: './src/components/overrides/OThemeSelect.astro',
     },
-    customCss: ['./src/tailwind.css', 'swiper/css', 'swiper/css/navigation', 'swiper/css/pagination', 'medium-zoom/dist/style.css']
+    customCss: [
+      './src/tailwind.css',
+      'swiper/css', 'swiper/css/navigation', 'swiper/css/pagination',
+      'medium-zoom/dist/style.css',
+      '@fancyapps/ui/dist/fancybox/fancybox.css', '@fancyapps/ui/dist/carousel/carousel.css', '@fancyapps/ui/dist/carousel/carousel.thumbs.css', '@fancyapps/ui/dist/carousel/carousel.autoplay.css',
+    ],
   }), tailwind({
-    applyBaseStyles: false
+    applyBaseStyles: false,
   }), icon()],
   image: {
     // Example: Enable the Sharp-based image service with a custom config
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
-        limitInputPixels: false
-      }
-    }
+        limitInputPixels: false,
+      },
+    },
   },
   // output: "static",
   output: "hybrid",

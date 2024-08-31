@@ -1,0 +1,69 @@
+---
+interface Props {
+  image: string;
+  width: number;
+  height: number;
+  alt?: string;
+  caption?: string;
+  gallery: string;
+  classAppend?: string;
+}
+
+const {
+  image,
+  width,
+  height,
+  alt = "",
+  caption = "",
+  gallery = "",
+  classAppend = "",
+} = Astro.props;
+---
+
+<!-- Store the message prop as a data attribute. -->
+<astro-fancybox class:list={[`kstd-astro-fancybox block [&_img]:rounded-lg`].concat(classAppend.split(/\s+/))}
+                data-gallery={gallery}
+                data-image={image}>
+    <a href={image} data-fancybox={gallery} data-caption={caption}>
+        <img class="cursor-zoom-in"
+             src={image}
+             width={width}
+             height={height}
+             alt={alt}
+             decoding="async"
+             loading="lazy"/>
+    </a>
+</astro-fancybox>
+
+<script>
+  import { Fancybox } from "@fancyapps/ui";
+
+  class AstroFancybox extends HTMLElement {
+    constructor() {
+      super();
+
+      // Read the message from the data attribute.
+      const gallery = this.dataset.gallery;
+
+      Fancybox.bind(`[data-fancybox="${gallery}"]`, {
+        // Your custom options
+        contentDblClick: 'iterateZoom',
+        Toolbar: {
+          display: {
+            left: ["infobar"],
+            middle: [],
+            right: [
+              "iterateZoom",
+              "download",
+              "fullscreen",
+              "thumbs",
+              "close",
+            ],
+          },
+        },
+      });
+    }
+  }
+
+  customElements.define('astro-fancybox', AstroFancybox);
+</script>

@@ -1,0 +1,121 @@
+---
+interface Image {
+  src: string;
+  width: number;
+  height: number;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  images: Image[];
+  gallery: string;
+  classAppend?: string;
+}
+
+const {
+  images = [],
+  gallery = "",
+  classAppend = "",
+} = Astro.props;
+---
+
+<!-- Store the message prop as a data attribute. -->
+<astro-fancy-carousel
+        class:list={[`kstd-astro-fancy-carousel block f-carousel [&_img]:rounded-lg [&_img]:cursor-zoom-in`].concat(classAppend.split(/\s+/))}
+        id={`${gallery}-carousel`}
+        data-gallery={gallery}>
+  {images.map((image, idx) =>
+          <div class="f-carousel__slide"
+               data-fancybox={gallery}
+               data-thumb-src={image.src}
+               data-src={image.src}
+          >
+              <img class={idx > 0 ? '!h-0' : ''}
+                   src={image.src}
+                   width={image.width}
+                   height={image.height}
+                   alt={image.alt}
+                   decoding="async"
+                   loading="lazy"/>
+          </div>,
+  )}
+</astro-fancy-carousel>
+
+<script>
+  import { Fancybox, Carousel } from "@fancyapps/ui";
+  import { Thumbs } from '@fancyapps/ui/dist/carousel/carousel.thumbs.esm';
+  import { Autoplay } from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
+
+  class AstroFancyCarousel extends HTMLElement {
+    constructor() {
+      super();
+
+      // Read the message from the data attribute.
+      const gallery = this.dataset.gallery;
+
+      const carousel = new Carousel(
+          document.getElementById(`${gallery}-carousel`),
+          {
+            transition: 'crossfade',
+            preload: 3, // Smoother navigation when using lazy loaded images
+
+            // Dots: false,
+            // Thumbs: {
+            //   type: 'classic',
+            //   Carousel: {
+            //     dragFree: false,
+            //     slidesPerPage: 'auto',
+            //     Navigation: true,
+            //
+            //     axis: 'x',
+            //     // breakpoints: {
+            //     //   '(min-width: 768px)': {
+            //     //     axis: 'y',
+            //     //   },
+            //     // },
+            //   },
+            // },
+            Autoplay: {
+              timeout: 4500,
+              showProgress: false,
+            },
+            on: {
+              ready: (instance) => {
+                  // Current page slides
+                  const slides = instance.slides;
+                  slides.forEach(slide => {
+                      // prevents flicker due to slides being block elements before the carousel is loaded via js
+                      console.log('img classList', slide, slide.el, slide.el.children[0].classList.remove('!h-0'))
+                  })
+                  console.log('ready', slides)
+              },
+            },
+          },
+          // { Thumbs },
+          { Autoplay },
+          // { Thumbs, Autoplay },
+      );
+
+      Fancybox.bind(`[data-fancybox="${gallery}"]`, {
+        // Your custom options
+        contentDblClick: 'iterateZoom',
+        Toolbar: {
+          display: {
+            left: ["infobar"],
+            middle: [],
+            right: [
+              "iterateZoom",
+              "download",
+              "fullscreen",
+              "thumbs",
+              "close",
+            ],
+          },
+        },
+      });
+    }
+  }
+
+  customElements.define('astro-fancy-carousel', AstroFancyCarousel);
+</script>

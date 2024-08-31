@@ -14,9 +14,10 @@ head:
 
 import { Icon } from 'astro-icon/components'
 import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
-import { Examples, Highlights, Highlight, Hero, Feature, Panel, TwoCols } from '/src/components';
-import GlobalMediumZoom from '/src/components/global/GlobalMediumZoom.astro';
+import { Examples, Highlights, Highlight, Hero, Feature, Panel, TwoCols } from '../../components';
+import GlobalMediumZoom from '../../components/global/GlobalMediumZoom.astro';
 import { globals } from '../../globals';
+import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
 
 <Hero titleTop="Kafka Streams Topology Design"
       title="The standard for designing and visualising Kafka Streams Topologies"
@@ -222,10 +223,21 @@ import { globals } from '../../globals';
        title="Examples"
        tagline="Inspire Your Designs: Explore Real-World Kafka Streams Topology Examples."
        centered>
-    [//]: # (<div class="text-center !mt-8">Coming soon...</div>)
-
-    <Examples />
-    <div class="text-center !mt-8">
+    <AstroFancyCarousel images={[
+      {
+        src: '/assets/examples/kstd-example_ecommerce-product-view_v0.3.1.svg',
+        width: 3153,
+        height: 1452,
+        alt: "'Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json",
+      },
+      {
+        src: '/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.1.svg',
+        width: 3720,
+        height: 1609,
+        alt: "'Kafka Streams Topology Design' diagram of an app processing 'User Flight Booking Status Update Notifications'",
+      },
+    ]} gallery="examples"/>
+    <div class="text-center !mt-12">
         You can find more details related to these examples in the [documentation](/guide/examples/).
     </div>
 </Panel>

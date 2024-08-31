@@ -7,7 +7,7 @@ sidebar:
 ---
 
 import { Aside } from '@astrojs/starlight/components';
-import GlobalMediumZoom from '/src/components/global/GlobalMediumZoom.astro';
+import AstroFancybox from '/src/components/AstroFancybox.astro';
 
 # {frontmatter.title}
 
@@ -41,9 +41,12 @@ Through transformations, joins, and aggregations, all data streams are combined 
 that may come in multiple variants (e.g. colors), each with its own price, stock, and availability. Variants form
 a 'product group' that have certain product details (description) and various attributes in common.
 
-<div class="my-12 images-zoomable [&>img]:w-full [&>img]:rounded-lg">
-    !['Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json](/assets/examples/kstd-example_ecommerce-product-view_v0.3.1.svg)
-</div>
+<AstroFancybox image="/assets/examples/kstd-example_ecommerce-product-view_v0.3.1.svg"
+               width={3153}
+               height={1452}
+               classAppend="!mt-8 !mb-12"
+               caption="Example: Ecommerce Product View"
+               alt="'Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json"/>
 
 
 ### User Flight Booking - Status Update Notifications
@@ -58,8 +61,9 @@ preferred language.
 
 Data streams are available as three Kafka topics. User notifications are triggered via a 'Notification Service' REST API.
 
-<div class="my-12 images-zoomable [&>img]:w-full [&>img]:rounded-lg">
-    !['Kafka Streams Topology Design' diagram of an app processing 'User Flight Booking Status Update Notifications'](/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.1.2.svg)
-</div>
-
-<GlobalMediumZoom />
+<AstroFancybox image="/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.1.svg"
+               width={3720}
+               height={1609}
+               classAppend="!my-12"
+               caption="Example: User Flight Booking - Status Update Notifications"
+               alt="'Kafka Streams Topology Design' diagram for the example app 'User Flight Booking - Status Update Notifications'"/>
