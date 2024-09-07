@@ -22,9 +22,9 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const version = '1.0.0-alpha.4'
-const assetsPath = `../../assets/lib/components/${version}`
-const images = import.meta.glob<{ default: ImageMetadata }>("../../assets/lib/components/1.0.0-alpha.4/*");
+const version = '1.0.0-beta.1'
+const assetsPath = `../../assets/lib/components`
+const images = import.meta.glob<{ default: ImageMetadata }>("../../assets/lib/components/*");
 const image = img ? img() : images[`${assetsPath}/${name}.svg`]()
 ---
 
