@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.0-beta.1
+The Excalidraw component library contains *67 shapes*.
+[Install v1.0.0-beta.1](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-beta.1.excalidrawlib).
+
+### Notable changes
+
+#### Sub-topology
+The sub-topology component now has a subtle background to make it better visible when placed within the topology component.
+All examples featured on the [KSTD website](https://kstd.thriving.dev/guide/examples/) have also been updated to the beta version. (Many thanks for the feedback [@Sophie](https://github.com/ableegoldman)! 🦦)
+
+<img src="https://github.com/user-attachments/assets/b0d83f71-bac1-470f-82da-6bc50f6094d6" width="110"/>
+
+#### Cosmetic improvements
+Various library components' visual look was slightly improved.  
+
+
 ## Version 1.0.0-alpha.4
 The Excalidraw component library contains *67 shapes*.
 [Install v1.0.0-alpha.4](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-alpha.4.excalidrawlib).
