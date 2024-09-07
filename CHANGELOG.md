@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Version 1.0.0-alpha.4
 The Excalidraw component library contains *67 shapes*.
-[Install v1.0.0-alpha.4](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flibs%2Fkafka-streams-topology-design_v1.0.0-alpha.4.excalidrawlib).
+[Install v1.0.0-alpha.4](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-alpha.4.excalidrawlib).
 
 ### Notable changes
 
@@ -54,4 +54,4 @@ PS: The new shapes, part of the new 'Legend' component, are shown below.
 This is the initial version that is made available for closed alpha testing.
 
 The Excalidraw component library holds *59 shapes*.
-[Install v1.0.0-alpha.3](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flibs%2Fkafka-streams-topology-design_v1.0.0-alpha.3.excalidrawlib).
+[Install v1.0.0-alpha.3](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-alpha.3.excalidrawlib).
