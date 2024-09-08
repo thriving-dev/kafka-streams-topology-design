@@ -7,63 +7,111 @@ sidebar:
 ---
 
 import { Aside } from '@astrojs/starlight/components';
-import AstroFancybox from '/src/components/AstroFancybox.astro';
-
-# {frontmatter.title}
-
-Explore KSTD designs of different types of Kafka Streams applications, ranging from pure DSL topologies, to low level
-implementation of the Processor API and state stores.
+import { AstroFancybox } from '/src/components';
 
 <div class="[&_strong]:font-semibold">
-    <Aside type="note" title="Disclaimer">
-        The examples presented on this page demonstrate advanced Kafka Streams topologies. While they address real-world
-        challenges, please note that these scenarios are _fictional_, designed to **illustrate practical applications of
-        the KSTD standard** — _not_ to provide a comprehensive tutorial on Kafka Streams itself.
 
-        The designs were created with the author’s best efforts to be both realistic and implementable within the outlined
-        requirements. However, they may not represent the optimal or most efficient solutions.
-    </Aside>
+  # {frontmatter.title}
 
-    <Aside type="tip">
-        All examples on this page are **SVG** files (Scalable Vector Graphics) with _embedded excalidraw scene data_.
+  Explore KSTD designs of different types of Kafka Streams applications, ranging from pure DSL topologies, to low level
+  implementation of the Processor API and state stores.
 
-        This means, you can save the `.svg` file to you local disk, and _open_ the SVG file with Excalidraw.
-    </Aside>
+  <Aside type="tip">
+      All examples on this page are **SVG** files (Scalable Vector Graphics) with _embedded excalidraw scene data_.
+
+      => This means, you can **save the `.svg` file** to your local disk, and **_open_ with Excalidraw!**
+  </Aside>
+
+  ## Examples
+
+  ### Word Count
+  The WordCount Demo design is a relatively **simple example and a good starting point**.
+
+  To find more details on this example, including a step-by-step guide to recreate the diagram by yourself, please start with the
+  [tutorial](/guide/tutorial-creating-your-first-diagram/).
+
+  <AstroFancybox image="/assets/examples/kstd-example_wordcount-demo_0.3.0.svg"
+                 width={2241}
+                 height={871}
+                 classAppend="!mt-8 !mb-12"
+                 caption="Example: Word "
+                 alt="KSTD 'WordCount Demo' tutorial - final result"/>
+
+
+  ### Ecommerce Product View
+
+  This Kafka Streams topology creates a full-context view for a product of an Ecommerce application from 5 data streams.
+  The source topics have different no. of partitions, and also different keys and scope.
+
+  Through transformations, joins, and aggregations, all data streams are combined to create a view of a product
+  that may come in multiple variants (e.g. colors), each with its own price, stock, and availability. Variants form
+  a 'product group' that have certain product details (description) and various attributes in common.
+
+  <Aside title="Highlights">
+  - Uses Kafka Streams **DSL** only
+  - Source topics have different _no. of partitions_ **-> repartitioning required**
+  - Through repartitioning and a subsequent join, the topology splits into **two sub-topologies** which are also shown in the diagram
+  - **Event _types_ and _serialization_** are shown as the data **progresses** throughout the streams using 'KV Record - Typed' library components
+  - Concise **hints** are shown _"inline"_ for some of the processing steps to improve clarity to the reader
+  </Aside>
+
+  <AstroFancybox image="/assets/examples/kstd-example_ecommerce-product-view_v0.4.1.svg"
+                 width={3120}
+                 height={1421}
+                 classAppend="!mt-8 !mb-12"
+                 caption="Example: Ecommerce Product View"
+                 alt="'Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json"/>
+
+  #### Events
+  - **ProductDescription Event**: Provides basic product information such as name, description, and category.
+  - **ProductAttribute Event**: Represents attributes of a product such as material, color options, or features.
+  - **ProductVariant Event**: Defines product variants such as different sizes or colors for the same product.
+  - **ProductVariantPrice Event**: Provides pricing information for a specific product variant, including discounts.
+  - **ProductVariantStock Event**: Provides stock and availability information for a product variant.
+  - **ProductFullContext Event**: This event holds all information about a product, including its description, attributes, variants, pricing, stock, and availability. It is designed to offer a full-context view of a product in the eCommerce system, which can be used for enriching product displays, recommendations, or inventory management.
+
+
+  ### User Flight Booking - Status Update Notifications
+
+  A travel company offers booking flights through their website. To notify users about any changes or updates to their
+  flight bookings in real-time, a stream processing application is implemented.
+
+  Flight status updates, such as 'check-in started', or 'flight cancelled', have to be communicated to all relevant users
+  in their configured communication channels (email, app, text message). The notification text should include event
+  details, as well as information on the departure, layover, and destination airports in both English and in their
+  preferred language.
+
+  Data streams are available as three Kafka topics. User notifications are triggered via a 'Notification Service' REST API.
+
+  <Aside title="Highlights">
+    - Uses Kafka Streams **Processor API** (short _PAPI_)
+    - Processors _read/write_ to **state stores** of different _types_ and _variants_
+    - Advanced PAPI usage:
+      - **Punctuator** is used by the _FlightBookingProcessor_ incl. the schedule
+      - **Interactive Queries** are used to implement and query a _one-to-many_ relationship, described in the diagram _"inline"_
+    - **Event _types_ and _serialization_** are shown as the data **progresses** throughout the streams using 'KV Record - Typed' library components
+    - **Named processors** incl. sources and sinks, and state stores
+    - **Step descriptions** in the _footer_ provide _roles and responsibilities_, and additional _functional context_ for processors and DSL operators
+  </Aside>
+
+  <AstroFancybox image="/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.1.svg"
+                 width={3720}
+                 height={1609}
+                 caption="Example: User Flight Booking - Status Update Notifications"
+                 alt="'Kafka Streams Topology Design' diagram for the example app 'User Flight Booking - Status Update Notifications'"/>
+
+  #### Events
+  - **AirportInfoI18n Event**: transports information about airports globally in different languages. The schema includes mandatory information in English, with the option to include translations in other languages.
+  - **FlightStatusUpdate Event**: focuses on the flight as a whole rather than just the departure airport. It includes information about the current status of the flight, any changes to the flight schedule, and delays.
+  - **UserFlightBooking Event**: holds information about a traveler’s booked flight, including reservation details, contact information, and preferred language for notifications.
+  - **UserFlightBookingNotification Event**: joins and combines information from _UserFlightBooking_, _Flight_, _FlightStatusUpdate_, and _AirportInfoI18n_ into an enriched output event, which is emitted on all flight status updates
+
+  ## Disclaimer ❗
+  The examples presented on this page demonstrate advanced Kafka Streams topologies. While they address real-world
+  challenges, please note that these scenarios are _fictional_, designed to **illustrate practical applications of
+  the KSTD standard** — _not_ to provide a comprehensive tutorial on Kafka Streams itself.
+
+  The designs were created with the author’s best efforts to be both realistic and implementable within the outlined
+  requirements. However, they may not represent the optimal or most efficient solutions.
+
 </div>
-
-
-### Ecommerce Product View
-
-This Kafka Streams topology creates a full-context view for a product of an Ecommerce application from 5 data streams.
-The source topics have different no. of partitions, and also different keys and scope.
-
-Through transformations, joins, and aggregations, all data streams are combined to create a view of a product
-that may come in multiple variants (e.g. colors), each with its own price, stock, and availability. Variants form
-a 'product group' that have certain product details (description) and various attributes in common.
-
-<AstroFancybox image="/assets/examples/kstd-example_ecommerce-product-view_v0.3.1.svg"
-               width={3153}
-               height={1452}
-               classAppend="!mt-8 !mb-12"
-               caption="Example: Ecommerce Product View"
-               alt="'Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json"/>
-
-
-### User Flight Booking - Status Update Notifications
-
-A travel company offers booking flights through their website. To notify users about any changes or updates to their
-flight bookings in real-time, a stream processing application is implemented.
-
-Flight status updates, such as 'check-in started', or 'flight cancelled', have to be communicated to all relevant users
-in their configured communication channels (email, app, text message). The notification text should include event
-details, as well as information on the departure, layover, and destination airports in both English and in their
-preferred language.
-
-Data streams are available as three Kafka topics. User notifications are triggered via a 'Notification Service' REST API.
-
-<AstroFancybox image="/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.1.svg"
-               width={3720}
-               height={1609}
-               classAppend="!my-12"
-               caption="Example: User Flight Booking - Status Update Notifications"
-               alt="'Kafka Streams Topology Design' diagram for the example app 'User Flight Booking - Status Update Notifications'"/>

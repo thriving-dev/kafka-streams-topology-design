@@ -13,23 +13,28 @@ import LibraryComponent from "../../../components/notation/LibraryComponent.astr
 ## Components
 
 ### State Store
-<LibraryComponent name="state-store" width={102}/>
+<LibraryComponent name="state-store" width={102} description="<b>State Store</b> is a local storage used in Kafka Streams to store and retrieve stateful information, allowing stateful operations like aggregations and joins."/>
 
 ### State Store Types
-<LibraryComponent name="store-type-inmemory" width={97}/>
-<LibraryComponent name="store-type-rocksdb" width={93}/>
-<LibraryComponent name="store-type-lrucache" width={103}/>
+<LibraryComponent name="store-type-inmemory" width={97} description="<b>In-Memory Store</b> is a state store type that holds data in the application's memory, providing fast access but limited by memory size and volatility."/>
+
+<LibraryComponent name="store-type-rocksdb" width={93} description="<b>RocksDB Store</b> is a persistent state store backed by RocksDB, enabling efficient storage and retrieval of large datasets on disk."/>
+
+<LibraryComponent name="store-type-lrucache" width={103} description="<b>LRU Cache Store</b> is a state store type that uses an in-memory cache with a Least Recently Used (LRU) eviction policy, providing fast access with limited memory footprint."/>
 
 ### State Store Variants
-<LibraryComponent name="store-variant-global" width={79}/>
-<LibraryComponent name="store-variant-versioned" width={96}/>
-<LibraryComponent name="store-variant-read-only" width={98}/>
+<LibraryComponent name="store-variant-global" width={79} description="<b>Global Store</b> is a variant of state store that is replicated to all instances of the Kafka Streams application, allowing global access to state data across partitions."/>
+
+<LibraryComponent name="store-variant-versioned" width={96} description="<b>Versioned Store</b> is a state store variant that maintains multiple versions of values over time, enabling access to historical state values for each key."/>
+
+<LibraryComponent name="store-variant-read-only" width={98} description="<b>Read-Only Store</b> is a variant of state store that allows read access but prevents modifications, typically used in queryable state scenarios. (ref <a href='https://cwiki.apache.org/confluence/display/KAFKA/KIP-813%3A+Shareable+State+Stores' target='_blank'>KIP-813</a>)"/>
 
 ### State Store Attribute - Logged
-<LibraryComponent name="store-attrib-logged" width={92}/>
-<LibraryComponent name="store-attrib-not-logged" width={121}/>
+<LibraryComponent name="store-attrib-logged" width={92} description="<b>Logged State Store</b> is a state store where changes are automatically logged to a Kafka <i>changelog</i> topic, enabling fault tolerance and recovery."/>
+
+<LibraryComponent name="store-attrib-not-logged" width={121} description="<b>Non-Logged State Store</b> is a state store without Kafka-backed logging."/>
 
 ### State Store Attribute - Cached
-<LibraryComponent name="store-attrib-cached" width={84}/>
-<LibraryComponent name="store-attrib-not-cached" width={114}/>
+<LibraryComponent name="store-attrib-cached" width={84} description="<b>Cached State Store</b> is a state store with an in-memory write buffer. Updates to the state store are buffered and only flushed to disk (when using RocksDB) and changelog topic (when logging enabled) on buffer overflow or when offsets are committed."/>
 
+<LibraryComponent name="store-attrib-not-cached" width={114} description="<b>Non-Cached State Store</b> is a state store that does not buffer, essentially flushes and forwards immediatly after processing."/>
