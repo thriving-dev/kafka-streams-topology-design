@@ -1,19 +1,59 @@
 ---
 title: KSTD Standard
-description: TODO
+description: Discover the KSTD design standard, covering the essential elements of Kafka Streams Topology Diagrams, from source-to-sink flow orientation to processor and state store naming.
 slug: guide/kstd-standard
 sidebar:
   order: 3
 ---
 
-# {frontmatter.title}
+# KSTD Standard
 
-*Work in progress...
+The KSTD Standard outlines a comprehensive approach to designing Kafka Streams Topology Diagrams. This page defines the
+essential layout components, building blocks, and structure to follow, as well as naming conventions, which are crucial
+for maintaining clarity.
+
+A consistent and intuitive design approach ensures that complex Kafka Streams topologies remain maintainable and
+aligned with business logic.
 
 ## Layout and Building Blocks
 
-Coming soon...
+When designing Kafka Streams Topology Diagrams, the key components are:
 
+- **Header**
+- **Main Block** (left to right):
+  - **Source Topics**
+  - **Topology**
+  - **Sink Topics**
+- **Footer**
+
+!!!TODO: provide pictures with the building blocks highlighted.!!!
+
+> **Note**: Typically, a single topology is depicted per diagram, though in some cases, smaller sidecar topologies may accompany the main topology.
+
+
+### Topology Layout and Internals
+
+The topology is the core of the entire diagram. While there are no strict rules governing the internal structure of a topology, there are important considerations:
+
+- **Sub-topologies**: When relevant to the design, especially in more advanced cases, it's recommended to include sub-topologies in your diagram. However, keep in mind that Kafka Streams automatically resolves sub-topologies, meaning they operate beyond the developer's direct control.
+- **Grouped PAPI Elements**: For complex use cases—such as those involving the *Processor API*, *State Stores*, *Interactive Queries*, or *Punctuators* — it can be useful to group related elements within an additional box. This provides a clear visual distinction of their logical association within the topology.
+- **Descriptions**: A general rule of thub, when it comes to adding descriptions to the diagram, is to use inline descriptions sparingly. If there's a sufficient level of complexity and therefore descriptions to add, consider placing them outside the Topology in the *Footer* block.
+
+> TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
+
+
+
+### Topology Layout and Internals
+
+The topology is the heart of the overall Diagram.
+Within the topology no clear rules are defined, but
+
+When experienced enough and important to the topology design, include sub-topologies into your diagram.
+Please be aware that sub-topologies are automatically resolved by Kafka Streams and are therefore outside of the developer's control.
+
+Complex use-cases that involve e.g. the Processor API, State Stores, Interactive Queries, and Punctuators, may be logically wrapped in an additional, virtual box highlighting the affiliation.
+
+> TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
 
 ## Orientation
 > TLDR: **'left to right'**
@@ -25,15 +65,19 @@ All examples provided are created in landscape orientation and show data flows f
 
 ## Naming Conventions
 
+While the KSTD standard does *not mandate* naming the elements in your diagrams, it is **highly recommended** to enhance clarity and comprehension.
+
+Consistently use the names defined in your designs during implementation. Explore the benefits of this approach below.
+
 ### Topology Name
 Recommended to name after the `APPLICATION_ID` (to be) used by the application.
 
-### Processing Steps
+### Named Processing Steps
 
 Naming processors and processing steps in a Kafka Streams topology is more than just a best practice; it’s a critical step in making your stream processing application maintainable, debuggable, and observable. It helps to ensure that your topology is understandable, both for humans and for the tools that interact with it, throughout the application’s lifecycle.
 
 1. **Debugging and Monitoring:** Named processors make logs, metrics, and error messages clearer, helping to trace issues and bottlenecks effectively.
-1. **Observability:** Custom metrics and visualization tools use processor names, enhancing insights into performance and data flow.
+1. **Observability:** Custom metrics and visualisation tools use processor names, enhancing insights into performance and data flow.
 1. **Code Clarity:** Meaningful names improve code readability, making it easier to understand and maintain complex topologies.
 1. **Refactoring:** Named steps simplify topology evolution and refactoring without affecting other parts.
 1. **Error Handling:** Enables more targeted exception handling.
@@ -41,10 +85,8 @@ Naming processors and processing steps in a Kafka Streams topology is more than 
 1. **Collaboration:** Improves communication between teams by providing clear references to specific steps.
 1. **Business Alignment:** Names can reflect business logic, making the topology more intuitive and aligned with business processes.
 
-[//]: # (TODO: example of `Named` Processor/Join/Aggregation)
+Remember, this also includes sources and sinks.
 
-### State Stores
+### Named State Stores
 State stores in Kafka Streams don’t always have to be named, but doing so is often beneficial, especially in more
 complex applications, for interactive queries, and for improving maintainability and observability.
-
-[//]: # (TODO: example of using `Materialized` Processor/Join/Aggregation)

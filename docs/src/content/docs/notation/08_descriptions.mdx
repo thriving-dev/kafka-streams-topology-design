@@ -9,14 +9,22 @@ sidebar:
 import LibraryComponent from "../../../components/notation/LibraryComponent.astro";
 
 # {frontmatter.title}
+Adding descriptions to technical diagrams is essential for clarity, accessibility, and understanding. They explain components and relationships, helping viewers grasp complex systems, and provide important context that diagrams alone lack. Descriptions also reduce ambiguity and enhance the quality of documentation by integrating visuals with text. Additionally, they support collaboration by ensuring a shared understanding among stakeholders, making diagrams more effective tools for communication and learning.
+
+Read more about [architecture diagramming best practices](/guide/architecture-diagrams-best-practices/) in our guide.
+
+See how they are used on our [examples](/guide/examples/) page.
 
 ## Components
 
 ### Description - Inline
-<LibraryComponent name="description-inline" width={138}/>
+<LibraryComponent name="description-inline" width={138} description="<b>Description - Inline</b> provides concise descriptive text directly within the main content, used for quickly clarifying or explaining a concept."/>
 
 ### Step Description - Footer Box
-<LibraryComponent name="description-box-footer" width={368}/>
+<LibraryComponent name="description-box-footer" width={368}
+                  description="<p><b>Step Description - Footer Box</b> is a highlighted description that appears in a footer box, typically used to summarize or provide additional details for a step or process.</p>
+                               <p>Use to provide an &quot;at a glance	&quot; view of key responsibilities.</p>"/>
 
 ### Step Description Callout
-<LibraryComponent name="description-callout" width={281}/>
+
+<LibraryComponent name="description-callout" width={281} description="<b>Step Description Callout</b> is a prominently styled description used to draw attention to important details or instructions related to a step or procedure."/>

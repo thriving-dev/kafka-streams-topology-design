@@ -1,6 +1,6 @@
 ---
 title: Kafka Streams Topology Design
-description: Kafka Streams Topology Design (KSTD) is an open standard dedicated to the clear and effective description and visualization of Kafka Stream topologies.
+description: Kafka Streams Topology Design (KSTD) is an open standard dedicated to the clear and effective description and visualisation of Kafka Stream topologies.
 template: splash
 head:
   - tag: title
@@ -14,7 +14,7 @@ head:
 
 import { Icon } from 'astro-icon/components'
 import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
-import { Examples, Highlights, Highlight, Hero, Feature, Panel, TwoCols } from '../../components';
+import { Highlights, Highlight, Hero, Feature, Panel, TwoCols } from '../../components';
 import GlobalMediumZoom from '../../components/global/GlobalMediumZoom.astro';
 import { globals } from '../../globals';
 import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
@@ -76,14 +76,14 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
                      icon="mdi:numeric-2-box"
                      iconColor="text-[var(--sl-color-text-accent)]">
                 A comprehensive component library for the popular drawing tool
-                [Excalidraw](https://excalidraw.com), known for creating hand-drawn style diagrams and visualizations.
+                [Excalidraw](https://excalidraw.com), known for creating hand-drawn style diagrams and visualisations.
 
                 It offers full coverage of the Kafka Streams DSL, along with essential infrastructure
                 and architectural building blocks, licensed under GPL-3.0.
 
                 [//]: # (KSTD features a comprehensive component library for the popular drawing tool [Excalidraw]&#40;https://excalidraw.com&#41;, published under GPL-3.0.)
 
-                [//]: # (> <span class="text-md"><Icon name="mdi:clippy" class="icon !inline-block !-mb-1.5 -ml-1 w-6 h-6" /> Excalidraw is a web-based, open-source tool for creating hand-drawn style diagrams and visualizations.</span>)
+                [//]: # (> <span class="text-md"><Icon name="mdi:clippy" class="icon !inline-block !-mb-1.5 -ml-1 w-6 h-6" /> Excalidraw is a web-based, open-source tool for creating hand-drawn style diagrams and visualisations.</span>)
             </Feature>
         </div>
     </TwoCols>
@@ -225,13 +225,19 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
        centered>
     <AstroFancyCarousel images={[
       {
-        src: '/assets/examples/kstd-example_ecommerce-product-view_v0.3.1.svg',
-        width: 3153,
-        height: 1452,
+        src: '/assets/examples/kstd-example_wordcount-demo_0.3.0.svg',
+        width: 2241,
+        height: 871,
+        alt: "'Kafka Streams Topology Design' diagram of an app processing 'User Flight Booking Status Update Notifications'",
+      },
+      {
+        src: '/assets/examples/kstd-example_ecommerce-product-view_v0.4.1.svg',
+        width: 3120,
+        height: 1421,
         alt: "'Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json",
       },
       {
-        src: '/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.1.svg',
+        src: '/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.3.svg',
         width: 3720,
         height: 1609,
         alt: "'Kafka Streams Topology Design' diagram of an app processing 'User Flight Booking Status Update Notifications'",

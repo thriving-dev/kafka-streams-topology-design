@@ -1,7 +1,7 @@
 ---
 title: Basics
 description: TODO
-slug: notation/app
+slug: notation/basics
 sidebar:
   order: 2
 ---
@@ -13,19 +13,35 @@ import LibraryComponent from "../../../components/notation/LibraryComponent.astr
 ## Components
 
 ### Header
-<LibraryComponent name="header" width={268} />
+<LibraryComponent name="header"
+                  width={268}
+                  title="Header."
+                  description="<br/>Every diagram should have a title, date and version. (Also see <a href='/guide/architecture-diagrams-best-practices/'>Architecture Diagram - Best Practices</a>)"/>
 
 ### Topology
-<LibraryComponent name="topology" width={191} />
+<LibraryComponent name="topology" width={197} description="
+<p><b>The topology</b> in Kafka Streams represents the logical abstraction layer that defines the data flow and processing logic between streams and state stores in a stream processing application.</p>
+<p>It's the outer most building block for your application and one of the library components you begin your design with.</p>
+"/>
 
 ### Sub-Topology
-<LibraryComponent name="sub-topology" width={119} />
+<LibraryComponent name="sub-topology" width={119} description="<b>A sub-topology</b> is an isolated section of a Kafka Streams topology that processes data independently from other parts, typically due to repartitioning or multiple input topics." />
 
-### Legend landscape|portrait
-<LibraryComponent name="kstd-legend-portrait" width={576} />
-<LibraryComponent name="kstd-legend-landscape" width={301} />
+### Legend Portrait/Landscape
+<LibraryComponent name="kstd-legend-portrait"
+                  width={280}
+                  title="Diagram Legend."
+                  description="<p>Basic key/legend that descibes the notation defined by KSTD.</p>
+                               <p>Includes a block of 4 shapes used by the Kafka Streams DSL Operators.</p>
+                               <p>Further KSTD destinguishes between two arrow types:
+                                 <ol><li>The solid line arrow shows the data flow through the stream procesing topology.</li>
+                                     <li>For everything else (e.g. IQ, RPC, or other access patterns), a dashed line arrow is used.</li></ol>
+                                 </p>
+                               <p>Then there's the representation used for topics and state stores.</p>
+                               <p>Last but not least a reference and link to the KSTD docs.</p>"/>
+<LibraryComponent name="kstd-legend-landscape" width={530} description="" />
 
 ### KSTD Watermark
-<LibraryComponent name="kstd-watermark" description="Support KSTD, spread the word! ❤️🦦" width={276} />
+<LibraryComponent name="kstd-watermark" title="Watermark and link to the website" description="<br/>Spread the word, support KSTD! 🦦 ❤️" width={276} />
 
 

@@ -7,19 +7,74 @@ sidebar:
 ---
 
 import LibraryComponent from "../../../components/notation/LibraryComponent.astro";
+import { Aside } from '@astrojs/starlight/components';
 
 # {frontmatter.title}
 
 ## Components
 
-### Topic - Basic, Default, Plus
-<LibraryComponent name="topic-basic" width={115}/>
-<LibraryComponent name="topic-default" width={231}/>
-<LibraryComponent name="topic-plus" width={258}/>
+### Topic
+**A Kafka topic** is a named, partitioned, and immutable log of messages where producers send data, and consumers read
+from, allowing for organized and scalable data streaming in Kafka.
+
+In KSTD diagrams, topics are commonly used to show **_sources_ and _sinks_**.
+
+Three different variants of topic components are provided. The default content included serves as a guideline.
+Choose the one you like and add details such as topic config parameters when they are essential to the topology design.
+
+<LibraryComponent name="topic-1"
+                  width={115}
+                  title="Topic 'Simple'."
+                  description="<br/>The most basic topic component. Icon and topic name."/>
+<LibraryComponent name="topic-2"
+                  width={231}
+                  title="Topic the Apache Kafka® logo."
+                  description="<br/>In addition to the topic name, additional configuration details may be included in a 2nd line in parenthesis."/>
+<LibraryComponent name="topic-3"
+                  width={258}
+                  title="Topic the Apache Kafka® logo (2)."
+                  description="<br/>An alternative choice to the previous component.<br/>More topic config options can be included, listed line-by-line."/>
+
+<div class="[&_aside]:text-md">
+  <Aside>
+    **Internal topics** in Kafka Streams are automatically managed Kafka topics used to store intermediate data, such as
+    state store _changelogs_ and _repartitioned_ data, to support fault tolerance and scalability within stream processing
+    applications.
+
+    As per our [standard](/guide/kstd-standard/) and [design principles](/guide/design-principles/),
+    **_changelog & repartition topics_ are not included** in the diagram. They usually don't provide additional value and
+    only clutter the diagram.
+
+    But remember, it's up to you. Draw what you feel is right and works best for you.
+  </Aside>
+</div>
 
 ### Key-Value Record
-<LibraryComponent name="record-kv" width={100}/>
+In a Kafka Streams topology, **data flows as _records_**, each consisting of a _key_, _value_, and associated _metadata_ (like timestamps). These records can undergo multiple transformations, and their data types for both keys and values may change between operations such as map(), flatMap(), or groupBy().
 
-### Key-Value Record - Typed
-<LibraryComponent name="record-kv-typed" width={101}/>
+Kafka Streams uses **SerDes** (Serializer/Deserializer) to convert data types between their in-memory representations (e.g., Java objects) and their serialized form (e.g., JSON, Avro, or bytes) for transport within Kafka.
 
+The 'Key-Value Record' component usually is added to describe the type and content of your data throughout the topology.
+It's commonly added for _sources_ & _sinks_, and whenever it changes. Further, it is also used
+in combination with [state stores](/notation/state-stores/).
+
+<LibraryComponent name="record-kv"
+                  width={110}
+                  title="Key-Value Record."
+                  description="<p>Describes the record key (k) and value (v). For generic types, it can be the name of an <i>identifier</i>. For complex objects, such as Avro or Protobuf, the <i>record</i> name is usually a good choice.</p>
+                               <p>Compound string keys can be described like this: <code>{departureDate}_{flightNumber}</code></p>"/>
+
+<LibraryComponent name="record-kv-typed"
+                  width={111}
+                  title="Key-Value Record Typed."
+                  description="<br>Includes information on the SerDes and the resulting data types."/>
+
+<div class="[&_aside]:text-md">
+  <Aside>
+    SerDes may change throughout the topology as different operations are applied, ensuring correct serialization at each step.
+    -	**Initial SerDes:** The SerDes for the source topic might, for example, deserialize a record key as a String and value as an Avro object.
+    -	**Transformations:** If the topology applies a transformation (e.g., converting a ProductEvent into a ProductView), the SerDes can change accordingly, requiring a new SerDe for the transformed object.
+    -	**Repartitioning:** Operations like groupBy() or selectKey() change the key type, often requiring a repartitioning topic with its own SerDe for the new key-value structure.
+    -	**State Stores:** If stateful processing is used (e.g., aggregations), internal changelog topics will store serialized state data using SerDes that correspond to the in-memory structure of the state store.
+  </Aside>
+</div>

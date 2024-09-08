@@ -13,16 +13,20 @@ import LibraryComponent from "../../../components/notation/LibraryComponent.astr
 ## Components
 
 ### Punctuator
-<LibraryComponent name="punctuator" width={118}/>
+<LibraryComponent name="punctuator" width={97} description="<b>Punctuator</b> is a callback interface in Kafka Streams that triggers periodic actions in processors, allowing time-based processing on 'wall clock time' or 'stream time'.<br/>Use in combination with Processor API (<a href='/notation/kafka-streams-dsl/#process'>process</a>/<a href='/notation/kafka-streams-dsl/#processvalues'>processValues</a>)."/>
 
 ### Partitioner
-<LibraryComponent name="partitioner" width={128}/>
+<LibraryComponent name="partitioner" width={128} description="<b>Partitioner</b> is responsible for determining which partition a record will be sent to based on its key, allowing control over how data is distributed across partitions in Kafka.<br/>Use in combination with the <a href='/notation/kafka-streams-dsl/#repartition'>repartition</a> DSL operator."/>
 
 ### Stateful
-<LibraryComponent name="stateful-1" width={102}/>
-<LibraryComponent name="stateful-2" width={68}/>
+These additional indicators are provided for arbitrary use. You can use them as you see fit or helpful. You can find an example in the [bonus step of the KSTD tutorial](/guide/tutorial-creating-your-first-diagram/#bonus-drawing-the-full-picture).
+
+<LibraryComponent name="stateful-1" width={94} description="<b>Stateful Indicator.</b> Refers to operations in Kafka Streams that rely on maintaining state, such as joins, aggregations, or windowed computations."/>
+<LibraryComponent name="stateful-2" width={68} description="<b>Stateful Indicator (2).</b> Alternative visual library component."/>
 
 ### Repartitioned
-<LibraryComponent name="repartitioned-1" width={103}/>
-<LibraryComponent name="repartitioned-2" width={98}/>
+These additional indicators are provided for arbitrary use. You can use them as you see fit or helpful. You can find an example in the [bonus step of the KSTD tutorial](/guide/tutorial-creating-your-first-diagram/#bonus-drawing-the-full-picture).
+
+<LibraryComponent name="repartitioned-1" width={98} description="<b>Repartitioned Indicator.</b> Refers to redistributing data across new partitions, often necessary when a key-changing operation like `selectKey()` is applied in Kafka Streams."/>
+<LibraryComponent name="repartitioned-2" width={98} description="<b>Repartitioned Indicator (2).</b> Alternative visual library component."/>
 

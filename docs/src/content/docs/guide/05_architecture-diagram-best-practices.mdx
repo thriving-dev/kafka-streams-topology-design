@@ -1,6 +1,6 @@
 ---
 title: Architecture Diagram - Best Practices
-description: TODO
+description: Learn the best practices for crafting clear and effective software architecture diagrams. Discover tips on notation, consistency, avoiding clutter, and ensuring traceability.
 slug: guide/architecture-diagrams-best-practices
 sidebar:
   order: 5
@@ -8,23 +8,39 @@ sidebar:
 
 # {frontmatter.title}
 
-*Work in progress...
+Creating effective software architecture diagrams can be a challenge. These diagrams need to convey the architecture’s structure, data flow, and constraints clearly, without overwhelming the viewer or omitting essential details. Below are some common challenges and best practices to help improve the quality of your architecture diagrams.
 
 ## Challenges
 
-- notation (shapes, edges, colors, lines and arrows)
-- "I will explain it later"
-  - Everything which is not described by the diagram itself is missing, and there is no room to provide verbal details to complement a diagram.
-- Cluttered or too vague diagrams
-  - trying to show too much or insufficient level of detail
-- Misleading/undocumented acronyms or too vague/generic terms
+- **Notation Issues**: Inconsistent or unclear use of shapes, edges, colors, lines, and arrows can confuse viewers. Establish a consistent notation system to ensure clarity.
+- **Lack of Context**: Everything that isn’t directly represented in the diagram is missing. There is no room for verbal explanations, so the diagram must stand on its own without requiring supplementary information.
+- **Cluttered or Too Vague Diagrams**: Striking the balance between too much information and too little is difficult. Overly complex diagrams can overwhelm, while vague diagrams don’t provide enough detail for meaningful insights.
+- **Misleading or Undocumented Acronyms and Terms**: Acronyms and vague terms may create confusion. Either avoid these or include a glossary to provide clear explanations.
 
 ## Best Practices
 
-- keep structural and semantical consistency across diagrams
-- prevent diagrams fragmentation
-- keep traceability -> [Tips and Tricks](/guide/tips-and-tricks/)
-- legends -> [Legend](/notation/basics/#legend)
+- **Maintain Structural and Semantic Consistency**: Ensure that you use consistent shapes, colors, and semantics across all your diagrams. This helps the viewer quickly understand the information being conveyed without having to re-interpret the notation every time.
+- **Add a Key/Legend**: Always include a key or legend in your diagrams to explain the notation. This can help users understand the meaning behind the shapes, colors, and lines. Refer to the legend provided with the Excalidraw library [here](/notation/basics/#legend-portraitlandscape).
+- **Prevent Diagram Fragmentation**: Avoid splitting diagrams into too many parts. If you must break them up, make sure each diagram is comprehensible on its own and provides the right level of detail for the context.
+- **Keep Traceability**: Always label your diagrams with important metadata such as the name of the diagram, the date it was created, and the version. This helps others track changes over time and maintain an accurate history of the architecture.
 
-## References
-- https://www.infoq.com/articles/crafting-architectural-diagrams/
+
+## Descriptions and Context
+Adding descriptions and context to a technical diagram is crucial for several reasons. First, it enhances clarity and understanding by explaining the components, relationships, and flow within the diagram, making it easier for viewers to grasp complex systems. This is particularly important for those who may not be deeply familiar with the subject matter.
+
+Additionally, descriptions provide contextual information that diagrams alone often lack. They help viewers understand not only what is depicted but also why it matters, offering a broader perspective on the system or process being illustrated.
+
+Descriptions also play a vital role in accessibility, making the information more widely usable. This includes catering to audiences with varying technical expertise or those who may have visual impairments and rely on detailed textual information to interpret diagrams.
+
+Consistency and precision are other key benefits. Descriptions help reduce ambiguity by ensuring that specific terms and processes are explained clearly, preventing misinterpretation of the visual elements.
+
+Moreover, adding context to diagrams enhances the overall quality of technical documentation. It integrates the visual with the textual narrative, making the documentation more comprehensive and useful in various contexts.
+
+Finally, clear descriptions support collaboration among multiple stakeholders. When working on technical projects, descriptions help ensure that everyone involved has a shared understanding, leading to smoother communication and cooperation. In essence, descriptions are vital for turning a diagram into a fully informative tool for both learning and collaboration.
+
+## Conclusion
+
+Crafting high-quality architecture diagrams is an iterative process that requires attention to both the big picture and small details. By following these best practices, you can create diagrams that are more accessible, understandable, and useful to your audience.
+
+## Further Reading Material
+- [InfoQ: The Art of Crafting Architectural Diagrams](https://www.infoq.com/articles/crafting-architectural-diagrams/) by Ionut Balosin

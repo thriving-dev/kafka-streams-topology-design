@@ -8,7 +8,7 @@ sidebar:
 
 import { Aside } from '@astrojs/starlight/components';
 import GlobalMediumZoom from '/src/components/global/GlobalMediumZoom.astro';
-import SwiperGallery from '/src/components/SwiperGallery.astro';
+import { AstroFancybox, SwiperGallery } from '/src/components';
 import { Icon } from 'astro-icon/components';
 
 # Creating Your First Diagram
@@ -151,7 +151,14 @@ This wraps up this simple tutorial.
 Having created your first diagram hands-on should give an initial idea on how to lay out and structure a KSTD diagram.
 Move on to the next section to learn all about the standard.
 
-## Bonus: Improving the WordCount Demo Topology
-Coming soon...
+## Bonus: Drawing The Full Picture
+
+
+<AstroFancybox image="/assets/examples/kstd-example_wordcount-demo_0.3.0.svg"
+               width={2241}
+               height={871}
+               classAppend="!mt-8 !mb-12"
+               caption="Example: Word "
+               alt="KSTD 'WordCount Demo' tutorial - final result"/>
 
 <GlobalMediumZoom />
