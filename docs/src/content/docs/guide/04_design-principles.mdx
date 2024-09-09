@@ -6,161 +6,104 @@ sidebar:
   order: 4
 ---
 
-import { Highlights, Highlight, Features, Feature, Panel, TwoCols, ThreeCols } from '/src/components';
+import { Aside } from '@astrojs/starlight/components';
+import AstroFancyCarousel from '../../../components/AstroFancyCarousel.astro'
 
 # {frontmatter.title}
 
-## Crafting Software Architecture Diagrams
-
-<div>
-  > **"Everything should be made as simple as possible, but not simpler”**
-  > Albert Einstein
-</div>
-
-This timeless quote serves as the guiding philosophy for creating effective software architecture diagrams. The goal
-is to strike the perfect balance between simplicity and accuracy. Below are key principles to follow when designing
-architecture diagrams:
 <div class="[&_strong]:font-semibold">
-1. **Start Simple, and Keep It Simple**
-1. **Prioritize Clarity Over Completeness**
-1. **Iterate and Add Details as the Design and Project Evolves**
+
+  ## Crafting Software Architecture Diagrams
+
+  <div>
+    > **"Everything should be made as simple as possible, but not simpler”**
+    > Albert Einstein
+  </div>
+
+  This timeless quote serves as the guiding philosophy for creating effective software architecture diagrams. The goal
+  is to strike the perfect balance between simplicity and accuracy. Below are key principles to follow when designing
+  architecture diagrams:
+  1. **Start Simple, and Keep It Simple**
+  1. **Prioritize Clarity Over Completeness**
+  1. **Iterate and Add Details as the Design and Project Evolves**
+
+  ### 1. **Start Simple, and Keep It Simple**
+  Just like any well-crafted system, your diagram should begin with a simple foundation. That's the topology, source, and
+  sink topics. Focus on the critical path of stream processing, only add additional details when necessary, omit otherwise.
+
+  Crafting & maintaining good diagrams takes time and effort.
+  <div class="leading-normal li0-mt-tight ul-mt-tight ml-4 pr-16">
+    * **prefer less/just enough** over risk of fragmentation, outdated diagrams
+    * **define a weight** for a certain diagram;
+    level of importance -> time to spend on
+    * include in user story acceptance criteria to update diagrams
+  </div>
+
+  ### 2. **Prioritize Clarity Over Completeness**
+  The primary function of an architecture diagram is to convey the overall topology and flow of the system. Focus on the
+  elements that are critical for the reader’s understanding. Include the key topic information, data types, data flow,
+  context, and descriptions, but avoid cluttering the diagram with unnecessary details.
+
+  Just like with code coverage, perfection is not the goal. Your diagram should communicate the topology clearly, but
+  it's unnecessary (and often counterproductive if the diagram is too cluttered) to depict every detail.
+
+  This is particularly important for Kafka Streams Topology Designs. There's a lot of complexity under the hood of the
+  DSL that's most likely *not relevant* to your design.
+
+  Here's an example, three versions of the WordCountExample topology, with increasing levels of detail:
+
+  <AstroFancyCarousel images={[
+    {
+      src: '/assets/guide/design-principles/kstd-example_wordcount-demo_BASIC.svg',
+      width: 1815,
+      height: 700,
+      alt: "KSTD Design Principles - Prioritize Clarity Over Completeness - Word Count Example with Detail level 'BASIC'",
+    },
+    {
+      src: '/assets/guide/design-principles/kstd-example_wordcount-demo_RICH.svg',
+      width: 2241,
+      height: 871,
+      alt: "KSTD Design Principles - Prioritize Clarity Over Completeness - Word Count Example with Detail level 'RICH'",
+    },
+    {
+      src: '/assets/guide/design-principles/kstd-example_wordcount-demo_COMPLETE.svg',
+      width: 2740,
+      height: 1302,
+      alt: "KSTD Design Principles - Prioritize Clarity Over Completeness - Word Count Example with Detail level 'COMPLETE'",
+    },
+  ]} gallery="examples"/>
+
+  The **RICH** diagram shows certain technical details, hinting at Kafka Streams internals.
+  But for this simple use-case, the **BASIC** diagram might be sufficient.
+
+  <Aside type="caution">
+    While the **COMPLETE** example (KSTD author speaking here 👋) is a valuable learning tool for understanding Kafka Streams,
+    applying this level of detail to real-world applications can be overkill.
+    It becomes error-prone, difficult to create, and even more challenging to maintain.
+
+    Furthermore, many of the details shown in the diagram simply are Kafka Streams defaults, valid for all stateful or aggregate operations.
+    (Cached, logged RocksDB store; repartition & changelog topics; topic configs)
+
+    Now, imagine trying to model the ['Ecommerce Product View' example](http://localhost:4321/guide/examples/#ecommerce-product-view)
+    example with this much detail - prepare for potential mental overload 🤯.
+  </Aside>
+
+
+  ### 3. **Iterate and Add Details as the Design and Project Evolves**
+  Software architecture is not static, and neither should your diagrams be. As your project evolves, so will your
+  architecture.
+
+  > Start with broad strokes and add finer details over time.
+
+  This iterative process ensures that your diagrams remain useful and up-to-date throughout the lifecycle of the project.
+
+
+  ## Closing Thoughts
+  The level of detail and the time invested in crafting your diagrams is entirely up to you, and should be tailored to
+  each specific project or topology. Start by defining the complexity or “weight” of your diagram, begin with simple
+  structures, and refine them iteratively.
+
+  Remember, it’s perfectly fine to brainstorm ideas through rough sketches in your meeting notes or even decide to forgo
+  a diagram altogether. Not every diagram needs to be fully fleshed out or continuously maintained.
+
 </div>
-
-
-### 1. **Start Simple, and Keep It Simple**
-Just like any well-crafted system, your diagram should begin with a simple foundation. That's the topology, source, and
-sink topics. Focus on the critical path of stream processing, only add additional details when necessary, omit otherwise.
-
-Crafting & maintaining good diagrams takes time and effort.
-<div class="leading-normal li0-mt-tight ul-mt-tight ml-4 pr-16">
-  * prefer less/just enough over risk of fragmentation, outdated diagrams
-  * define a weight for a certain diagram;
-  level of importance -> time to spend on
-  * include in user story acceptance criteria to update diagrams
-</div>
-
-### 2. **Prioritize Clarity Over Completeness**
-The primary function of an architecture diagram is to convey the overall topology and flow of the system. Focus on the
-elements that are critical for the reader’s understanding. Include the key topic information, data types, data flow,
-context, and descriptions, but avoid cluttering the diagram with unnecessary details.
-
-Just like with code coverage, perfection is not the goal. Your diagram should communicate the topology clearly, but
-it's unnecessary (and often counterproductive if the diagram is too cluttered) to depict every detail.
-
-This is particularly important for Kafka Streams Topology Designs. There's a lot of complexity under the hood of the
-DSL that might not be relevant to your design.
-
-Here's an example:
-
-TODO!!!
-
-### 3. **Iterate and Add Details as the Design and Project Evolves**
-Software architecture is not static, and neither should your diagrams be. As your project evolves, so will your
-architecture.
-
-> <div class="font-semibold">Start with broad strokes and add finer details over time.</div>
-
-This iterative process ensures that your diagrams remain useful and up-to-date throughout the lifecycle of the project.
-
-
-[//]: # (## Architecture Diagrams)
-
-[//]: # ()
-[//]: # (### Quick takeaways)
-
-[//]: # ()
-[//]: # (<TwoCols>)
-
-[//]: # (    <div class="leading-normal li0-mt-tight ul-mt-tight my-6 ml-4 pr-16">)
-
-[//]: # (        * always add a **legend**, incl. meaning of)
-
-[//]: # (        * box/shape/edges)
-
-[//]: # (        * arrows)
-
-[//]: # (        * lines)
-
-[//]: # (        * line types)
-
-[//]: # (        * colours)
-
-[//]: # (        * **glossary** for misleading/undocumented acronyms or too vague/generic terms)
-
-[//]: # (        * always add+show **version**)
-
-[//]: # (    </div>)
-
-[//]: # (    <div class="-ml-12">)
-
-[//]: # (        <div class="mt-15" ></div>)
-
-[//]: # ()
-[//]: # (        <div class="leading-normal li0-mt-tight ul-mt-tight my-6 ml-4">)
-
-[//]: # (            * **right number** of diagrams)
-
-[//]: # (            * **don’t mix up** the **level of detail**)
-
-[//]: # (            * keep structural and semantic **consistency across diagrams**)
-
-[//]: # (            * add **enough text** so it hardly requires additional explanation)
-
-[//]: # (            * "a picture is worth a thousand words" => "if it raises more questions than answers, the diagram is not well created")
-
-[//]: # (            * **avoid any need for further clarifications** by including all necessary details in a diagram)
-
-[//]: # (            * balance between cluttered vs. too vague)
-
-[//]: # (        </div>)
-
-[//]: # (    </div>)
-
-[//]: # (</TwoCols>)
-
-[//]: # ()
-[//]: # (### Additional notes & things to mention)
-
-[//]: # ()
-[//]: # (<TwoCols>)
-
-[//]: # (<div>)
-
-[//]: # (    Diagrams can be very powerful for various use cases and can have a big impact on a project at different stages, e.g.)
-
-[//]: # (    <div class="leading-normal li0-mt-tight ul-mt-tight ml-4">)
-
-[//]: # (        * synthesis &#40;design process&#41;)
-
-[//]: # (        * architecture review)
-
-[//]: # (        * decision-making)
-
-[//]: # (        * knowledge transfer)
-
-[//]: # (        * on-boarding)
-
-[//]: # (    </div>)
-
-[//]: # (</div>)
-
-[//]: # (<div>)
-
-[//]: # (    Crafting & maintaining good diagrams takes time and effort)
-
-[//]: # (    <div class="leading-normal li0-mt-tight ul-mt-tight ml-4 pr-16">)
-
-[//]: # (        * prefer less/just enough over risk of fragmentation, outdated diagrams)
-
-[//]: # (        * define a weight for a certain diagram;)
-
-[//]: # (        level of importance -> time to spend on)
-
-[//]: # (        * include in user story acceptance criteria to update diagrams)
-
-[//]: # (    </div>)
-
-[//]: # (</div>)
-
-[//]: # (</TwoCols>)
-

@@ -28,6 +28,7 @@ const {
   {images.map((image, idx) =>
           <div class="f-carousel__slide"
                data-fancybox={gallery}
+               data-caption={image.alt}
                data-thumb-src={image.src}
                data-src={image.src}
           >
@@ -69,11 +70,6 @@ const {
             //     Navigation: true,
             //
             //     axis: 'x',
-            //     // breakpoints: {
-            //     //   '(min-width: 768px)': {
-            //     //     axis: 'y',
-            //     //   },
-            //     // },
             //   },
             // },
             Autoplay: {
