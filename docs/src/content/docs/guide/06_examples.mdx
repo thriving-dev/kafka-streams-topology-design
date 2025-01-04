@@ -81,7 +81,7 @@ import { AstroFancybox } from '/src/components';
   details, as well as information on the departure, layover, and destination airports in both English and in their
   preferred language.
 
-  Data streams are available as three Kafka topics. User notifications are triggered via a 'Notification Service' REST API.
+  Four Kafka topics provide the source data to be aggregated. A 'Notification Service' REST API triggers user notifications.
 
   <Aside title="Highlights">
     - Uses Kafka Streams **Processor API** (short _PAPI_)
@@ -94,17 +94,18 @@ import { AstroFancybox } from '/src/components';
     - **Step descriptions** in the _footer_ provide _roles and responsibilities_, and additional _functional context_ for processors and DSL operators
   </Aside>
 
-  <AstroFancybox image="/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.1.svg"
+  <AstroFancybox image="/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.3.5.svg"
                  width={3720}
                  height={1609}
                  caption="Example: User Flight Booking - Status Update Notifications"
                  alt="'Kafka Streams Topology Design' diagram for the example app 'User Flight Booking - Status Update Notifications'"/>
 
   #### Events
-  - **AirportInfoI18n Event**: transports information about airports globally in different languages. The schema includes mandatory information in English, with the option to include translations in other languages.
-  - **FlightStatusUpdate Event**: focuses on the flight as a whole rather than just the departure airport. It includes information about the current status of the flight, any changes to the flight schedule, and delays.
-  - **UserFlightBooking Event**: holds information about a traveler’s booked flight, including reservation details, contact information, and preferred language for notifications.
-  - **UserFlightBookingNotification Event**: joins and combines information from _UserFlightBooking_, _Flight_, _FlightStatusUpdate_, and _AirportInfoI18n_ into an enriched output event, which is emitted on all flight status updates
+  - **Flight**: all details about scheduled flights, including flight category, flight number and departure date, as well as departure and arrival airports and times.
+  - **AirportInfoI18n**: transports information about airports globally in different languages. The schema includes mandatory information in English, with the option to include translations in other languages.
+  - **UserFlightBooking**: holds information about a traveler’s booked flight, including reservation details, contact information, and preferred language for notifications.
+  - **FlightStatusUpdate**: focuses on the flight as a whole rather than just the departure airport. It includes information about the current status of the flight, any changes to the flight schedule, and delays.
+  - **UserFlightBookingNotification**: joins and combines information from _UserFlightBooking_, _Flight_, _FlightStatusUpdate_, and _AirportInfoI18n_ into an enriched output event, which is emitted on all flight status updates
 
   ## Disclaimer ❗
   The examples presented on this page demonstrate advanced Kafka Streams topologies. While they address real-world

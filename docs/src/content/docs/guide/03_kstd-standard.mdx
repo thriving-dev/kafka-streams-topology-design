@@ -19,10 +19,20 @@ aligned with business logic.
 
 ## Layout and Building Blocks
 
+### Orientation
+> TLDR: go **'left to right'**
+
+KSTD recommends, but does not mandate a certain orientation or direction, but the library was created to work best for a 'left to right'
+direction of data flows.
+
+All examples provided are created in landscape orientation and show data flows from left (sources) to the right (sinks).
+
+### Header; Body; Footer
+
 When designing Kafka Streams Topology Diagrams, the key layout blocks are:
 
 - **Header**: Title, diagram type, date, and version. *(ref [Architecture Diagram - Best Practices](/guide/architecture-diagrams-best-practices/))*
-- **Main Block**: (left to right)
+- **Main Body**: (left to right)
   - **Source Topics**
   - **Topology**: The detailed design of the Kafka Streams application, the heart of the diagram.
   - **Sink Topics**
@@ -47,7 +57,7 @@ When designing Kafka Streams Topology Diagrams, the key layout blocks are:
     height: 1770,
     alt: "KSTD Standard - Layout and Building Blocks - Raw Diagram",
   },
-]} gallery="examples"/>
+]} gallery="layout-and-building-blocks"/>
 
 > **Note**: Typically, a single topology is depicted per diagram, though in some cases, smaller sidecar topologies may accompany the main topology.
 
@@ -60,17 +70,55 @@ The topology is the core of the entire diagram. While there are no strict rules 
 - **Grouped PAPI Elements**: For complex use cases—such as those involving the *Processor API*, *State Stores*, *Interactive Queries*, or *Punctuators* — it can be useful to group related elements within an additional box. This provides a clear visual distinction of their logical association within the topology.
 - **Descriptions**: A general rule of thub, when it comes to adding descriptions to the diagram, is to use inline descriptions sparingly. If there's a sufficient level of complexity and therefore descriptions to add, consider placing them outside the Topology in the *Footer* block.
 
-> TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
+<AstroFancyCarousel autoplay={3500} classAppend="!mb-12" images={[
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_1.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Sub-topologies",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_2.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Grouped PAPI Elements",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_3.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Descriptions",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_4.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Raw Diagram",
+  },
+]} gallery="topology-layout-and-internals"/>
 
-Swimlanes. (TODO)
+### Swimlanes
 
-## Orientation
-> TLDR: **'left to right'**
+Swimlanes are a visual organization technique used in diagrams to clearly delineate processes, and workflows across
+functional areas.
 
-KSTD recommends, but does not mandate a certain orientation or direction, but the library was created to work best for a 'left to right'
-direction of data flows.
+In KSTD swimlanes are not actively drawn, but maintaining consistent alignment for processing steps of individual streams
+has proven to improve readability of designs.
 
-All examples provided are created in landscape orientation and show data flows from left (sources) to the right (sinks).
+<AstroFancyCarousel autoplay={false} classAppend="!mb-12" images={[
+  {
+    src: '/assets/guide/standard/kstd-standard-swimlanes_1.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Swimlanes",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-swimlanes_2.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Raw Diagram",
+  },
+]} gallery="swimlanes"/>
 
 ## Naming Conventions
 

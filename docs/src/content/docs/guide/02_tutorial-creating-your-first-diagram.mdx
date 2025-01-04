@@ -109,7 +109,7 @@ This is how it looks at this stage:
 Rhetorical **questions**:
 - Is this version a good and useful diagram?
 - Just by looking at the diagram, would you be able to
-  - ...how the data streams (in/out) look like? (data types/Serdes, content)
+  - ...tell how the data streams (in/out) look like? (data types/Serdes, content)
   - ...understand or implement the details of the transformation in the `flatMapValue` step?
 
 The simple **answer: No!!** We'd be _guessing_, making _assumptions_ that might not actually be correct.
@@ -149,10 +149,25 @@ This wraps up this simple tutorial.
 ## Conclusions, Next Steps
 
 Having created your first diagram hands-on should give an initial idea on how to lay out and structure a KSTD diagram.
+
 Move on to the next section to learn all about the standard.
 
-## Bonus: Drawing The Full Picture
+____
 
+## (Bonus: Drawing The Full Picture)
+
+<Aside>
+  **We're now entering *low level grounds* of the Kafka Streams *internal architecture*.**
+
+  For most use cases where the high-level Kafka Streams DSL is used, the design of the application (topology) does not need
+  to emphasize details such as sub-topologies, repartitioning, and changelog topics.
+</Aside>
+
+In this bonus step, we're adding the following details to our design:
+- Named Processing Steps: (above each step) all Processor nodes are named.<br />
+  *(Why is this important? -> [KSTD Standard](/guide/kstd-standard/#named-processing-steps))*
+- Internal concepts such as *repartition topics* and *state stores*, using [advanced notation indicators](/notation/advanced/)
+- [Sub-topologies](/notation/fundamentals/#sub-topology) (dotted line blue boxes) show how Kafka Streams splits up topologies under the hood due to stream repartitioning.
 
 <AstroFancybox image="/assets/examples/kstd-example_wordcount-demo_0.3.0.svg"
                width={2241}
@@ -160,5 +175,13 @@ Move on to the next section to learn all about the standard.
                classAppend="!mt-8 !mb-12"
                caption="Example: Word "
                alt="KSTD 'WordCount Demo' tutorial - final result"/>
+
+<Aside type="caution">
+  [Sub-topologies](https://docs.confluent.io/platform/current/streams/architecture.html#sub-topologies-also-called-sub-graphs) in particular are determined by the KS framework itself and cannot be changed directly by developers.
+  For advanced use-cases it can be important to understand and consider.
+  Please note that it requires experience and cross-checking the actual KS runtime to get it right.
+
+  ℹ️ For more details, discussing the correct level of detail of your diagrams, visit [Design Principles > 2. Prioritize Clarity Over Completeness](/guide/design-principles/#2-prioritize-clarity-over-completeness).
+</Aside>
 
 <GlobalMediumZoom />
