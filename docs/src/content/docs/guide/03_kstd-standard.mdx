@@ -6,6 +6,8 @@ sidebar:
   order: 3
 ---
 
+import AstroFancyCarousel from '../../../components/AstroFancyCarousel.astro'
+
 # {frontmatter.title}
 
 The KSTD Standard outlines a comprehensive approach to designing Kafka Streams Topology Diagrams. This page defines the
@@ -17,16 +19,35 @@ aligned with business logic.
 
 ## Layout and Building Blocks
 
-When designing Kafka Streams Topology Diagrams, the key components are:
+When designing Kafka Streams Topology Diagrams, the key layout blocks are:
 
-- **Header**
-- **Main Block** (left to right):
+- **Header**: Title, diagram type, date, and version. *(ref [Architecture Diagram - Best Practices](/guide/architecture-diagrams-best-practices/))*
+- **Main Block**: (left to right)
   - **Source Topics**
-  - **Topology**
+  - **Topology**: The detailed design of the Kafka Streams application, the heart of the diagram.
   - **Sink Topics**
-- **Footer**
+- **Footer**: (Optional) Place additional description, such as key responsibilities and processing logic for steps and operators.
 
-!!!TODO: provide pictures with the building blocks highlighted.!!!
+<AstroFancyCarousel autoplay={3500} classAppend="!mb-12" images={[
+  {
+    src: '/assets/guide/standard/kstd-standard-layout-and-building-blocks_1.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Layout and Building Blocks - Header, Main, Footer",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-layout-and-building-blocks_2.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Layout and Building Blocks - Main - Source Topics, Topology, Sink Topics",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-layout-and-building-blocks_3.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Layout and Building Blocks - Raw Diagram",
+  },
+]} gallery="examples"/>
 
 > **Note**: Typically, a single topology is depicted per diagram, though in some cases, smaller sidecar topologies may accompany the main topology.
 
@@ -41,19 +62,7 @@ The topology is the core of the entire diagram. While there are no strict rules 
 
 > TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
 
-
-
-### Topology Layout and Internals
-
-The topology is the heart of the overall Diagram.
-Within the topology no clear rules are defined, but
-
-When experienced enough and important to the topology design, include sub-topologies into your diagram.
-Please be aware that sub-topologies are automatically resolved by Kafka Streams and are therefore outside of the developer's control.
-
-Complex use-cases that involve e.g. the Processor API, State Stores, Interactive Queries, and Punctuators, may be logically wrapped in an additional, virtual box highlighting the affiliation.
-
-> TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
+Swimlanes. (TODO)
 
 ## Orientation
 > TLDR: **'left to right'**

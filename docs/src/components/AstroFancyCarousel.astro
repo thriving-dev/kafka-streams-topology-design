@@ -10,12 +10,14 @@ interface Image {
 interface Props {
   images: Image[];
   gallery: string;
+  autoplay: number;
   classAppend?: string;
 }
 
 const {
   images = [],
   gallery = "",
+  autoplay = 4500,
   classAppend = "",
 } = Astro.props;
 ---
@@ -24,7 +26,7 @@ const {
 <astro-fancy-carousel
         class:list={[`kstd-astro-fancy-carousel block f-carousel [&_img]:rounded-lg [&_img]:cursor-zoom-in`].concat(classAppend.split(/\s+/))}
         id={`${gallery}-carousel`}
-        data-gallery={gallery}>
+        data-gallery={gallery} data-autoplay={autoplay}>
   {images.map((image, idx) =>
           <div class="f-carousel__slide"
                data-fancybox={gallery}
@@ -54,6 +56,8 @@ const {
 
       // Read the message from the data attribute.
       const gallery = this.dataset.gallery;
+      const autoplay = Number(this.dataset.autoplay);
+      console.log('gallery', gallery, 'autoplay', autoplay)
 
       const carousel = new Carousel(
           document.getElementById(`${gallery}-carousel`),
@@ -72,10 +76,11 @@ const {
             //     axis: 'x',
             //   },
             // },
-            Autoplay: {
-              timeout: 4500,
-              showProgress: false,
-            },
+            ...(autoplay ? { Autoplay: {
+                timeout: autoplay,
+                showProgress: false,
+              }
+            } : { Autoplay: false }),
             on: {
               ready: (instance) => {
                   // Current page slides
