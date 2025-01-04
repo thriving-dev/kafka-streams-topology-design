@@ -63,4 +63,8 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: { enabled: true },
   }),
+  redirects: {
+    '/notation/basics/': '/notation/fundamentals/',
+    '/notation/infrastructure/': '/notation/topics-and-events/',
+  },
 });

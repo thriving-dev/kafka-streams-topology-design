@@ -46,13 +46,6 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
         <div class={`!mt-0 h-full
                      bg-no-repeat bg-contain bg-top
                      bg-[url('/examples/animated/kafka-streams-topology-design_word-count-example_v2.png')]`}>
-            [//]: # (
-                TODO: Consider adding pause/replay functionality to gif..
-                https://github.com/ctrl-freaks/freezeframe.js?tab=readme-ov-file
-                https://css-tricks.com/pause-gif-details-summary/
-            )
-
-            [//]: # (![test]&#40;../../assets/examples/animated/kafka-streams-topology-design_word-count-example_v1.gif&#41;)
             <video autoPlay muted playsInline loop width="2066" height="1384" class="w-full">
                 <source src="/examples/animated/kafka-streams-topology-design_word-count-example_v2.mp4" type="video/mp4" />
             </video>
@@ -181,27 +174,27 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
                         [&>div>p>img]:!max-h-full
                         [&>div>p>img]:object-contain">
                 <div>
-                    ![TODO: provide alt](../../assets/diagrams-out-in-the-www/topo-example-1.png)
+                    ![Diagram by Daniel Medeiros de Assis](../../assets/diagrams-out-in-the-www/topo-example-1.png)
                     <span>[[1] Daniel Medeiros de Assis](https://daniel.arneam.com/blog/distributedarchitecture/2020-10-25-Kafka-Streams-Concepts/)</span>
                 </div>
                 <div>
-                    ![TODO: provide alt](../../assets/diagrams-out-in-the-www/zz85_kafka-streams-viz_1.webp)
+                    ![Diagram by zz85/kafka-streams-viz](../../assets/diagrams-out-in-the-www/zz85_kafka-streams-viz_1.webp)
                     <span>[[2] zz85/kafka-streams-viz](https://github.com/zz85/kafka-streams-viz)</span>
                 </div>
                 <div>
-                    ![TODO: provide alt](../../assets/diagrams-out-in-the-www/Confluent_Narkhede_example-2.png)
+                    ![Diagram by Neha Narkhede (1)](../../assets/diagrams-out-in-the-www/Confluent_Narkhede_example-2.png)
                     <span>[[3] Neha Narkhede (1)](https://www.alibabacloud.com/blog/595602)</span>
                 </div>
                 <div>
-                    ![TODO: provide alt](../../assets/diagrams-out-in-the-www/Confluent_Narkhede_example-1.png)
+                    ![Diagram by Neha Narkhede (2)](../../assets/diagrams-out-in-the-www/Confluent_Narkhede_example-1.png)
                     <span>[[4] Neha Narkhede (2)](https://www.alibabacloud.com/blog/595602)</span>
                 </div>
                 <div>
-                    ![TODO: provide alt](../../assets/diagrams-out-in-the-www/micro_topo.jpeg)
+                    ![Diagram by Michelin Blog](../../assets/diagrams-out-in-the-www/micro_topo.jpeg)
                     <span>[[5] Michelin Blog](https://github.com/michelin/designing-kafka-streams-applications)</span>
                 </div>
                 <div>
-                    ![TODO: provide alt](../../assets/diagrams-out-in-the-www/redhead-data-streaming-pipeline.jpg)
+                    ![Diagram by Redhead Blog, 2020](../../assets/diagrams-out-in-the-www/redhead-data-streaming-pipeline.jpg)
                     <span>[[6] Redhead Blog, 2020](https://developers.redhat.com/blog/2020/09/28/build-a-data-streaming-pipeline-using-kafka-streams-and-quarkus#the_traditional_messaging_system)</span>
                 </div>
             </div>
@@ -237,9 +230,9 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
         alt: "'Kafka Streams Topology Design' diagram of an eCommerce example app, producing a full-context 'product view', both as avro and json",
       },
       {
-        src: '/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.2.3.svg',
-        width: 3720,
-        height: 1609,
+        src: '/assets/examples/kstd-example_user-booking-flight-status-notifications_v0.3.5.svg',
+        width: 4744,
+        height: 1930,
         alt: "'Kafka Streams Topology Design' diagram of an app processing 'User Flight Booking Status Update Notifications'",
       },
     ]} gallery="examples"/>
@@ -406,9 +399,20 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
 
             You can find more recommendations on _design principles_ and _architecture diagrams_ in the [documentation](/guide/design-principles/).
         </Highlight>
+        <Highlight title="OK, Kafka Streams. What about other stream processing technilogies?"
+                   icon="mdi:chevron-right">
+          The library has been created while designing and implementing applications with Kafka Streams.
+          So the milestone for version 1.0.0 naturally was to focus on Kafka Streams.
+
+          Can the library be used to describe e.g. **Apache Flink** or **Apache Spark** applications?
+          Simple answer: while no one's stopping you, but it's not supported *right now*.
+
+          You want to adapt and create something similar to KSTD for other technologies? Please get in touch to
+          discuss this further!
+        </Highlight>
         <Highlight title="Is KSTD free? It's licensed under GPL-3.0, what does that mean?"
                    icon="mdi:chevron-right">
-            Yes, the KSTD standard and the Excalidraw library are **free** for personal, as well as for commercial usw.
+            Yes, the KSTD standard and the Excalidraw library are **free** for personal, as well as for commercial use.
 
             > GPL-3.0 is a free software license that allows users to freely use, modify, and share software, ensuring it stays free and open for everyone.
 
@@ -422,6 +426,38 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
             For discussing new ideas on library items or posting feature requests, please start a <a href={`${globals.github}/discussions`}>discussion</a>!
         </Highlight>
     </TwoCols>
+</Panel>
+
+
+<Panel titleTop="Credits"
+       title="Similar Projects"
+       tagline="As the author, I want to acknowledge the resources and individuals who have provided valuable insights and inspiration along the way."
+       classAppend="md:px-8 [&>div]:!-mb-0"
+       centered>
+  <TwoCols classAppend="leading-6 gap-y-6 md:gap-y-8 md:!gap-x-12
+                          [&_li]:mb-4
+                          [&>div]:!mt-0">
+    <div>
+      <div class="!mb-2 font-bold text-lg md:text-xl">References</div>
+      - [**Flink Kafka Stream Implementation.**](https://github.com/ludovic-boutros/flink-kafka-stream-implementation)
+      While not specifically focused on visualizing topologies, the diagrams in the repository were created independently of KSTD, driven by the shared vision of Adam Souquières and Ludovic Boutros. There seems to be a natural connection between our approaches.
+      - <p>[**Designing Kafka Streams Applications.**](https://blogit.michelin.io/dkafka-streams/)
+      The team at Michelin published an article on the concept of 'Master Topologies' and 'Micro Topologies' they established over the past years designing and building Kafka Streams applications.</p>
+        <p>The methodology puts more focus on modelling business requirements, and goes less detailed into Kafka Streams. But the blog post emphasises the very same need for comprehensive and granular understanding of our end-to-end communication of solutions.</p>
+      - **[zz85/kafka-streams-viz](https://github.com/zz85/kafka-streams-viz) by Joshua Koo.**
+      A tool for visualizing stream topologies by generating diagrams from a kafka stream topology descriptions.
+    </div>
+    <div>
+      <div class="!mb-2 font-bold text-lg md:text-xl">Special Thanks</div>
+      - <p>**[C4 Model](https://c4model.com/) by Simon Brown.**
+      Simon Brown has had a significant impact on the software engineering community by improving how teams approach and communicate software architecture.</p>
+      <p>Through his creation of the *C4 Model*, he introduced a clear, accessible way to document systems, making architectural diagrams more practical and widely understood. His work has helped standardize architecture visualization, fostering better collaboration and understanding across development teams and organizations.</p>
+      <p>Simon’s work has been a source of inspiration and a positive example, motivating me to create and share this standard with the community.</p>
+      - **Excalidraw**
+      has been my go-to tool for visualising Software Architecture for years. Its ease of use and support for creating reusable libraries allow me to sketch and create technical designs at a speed that does not hinder the creative process.
+      I can brainstorm, bring my ideas and solutions "on paper", and live collaborate with a remote team. Big thank you, Excalidraw!
+    </div>
+  </TwoCols>
 </Panel>
 
 

@@ -6,7 +6,9 @@ sidebar:
   order: 3
 ---
 
-# KSTD Standard
+import AstroFancyCarousel from '../../../components/AstroFancyCarousel.astro'
+
+# {frontmatter.title}
 
 The KSTD Standard outlines a comprehensive approach to designing Kafka Streams Topology Diagrams. This page defines the
 essential layout components, building blocks, and structure to follow, as well as naming conventions, which are crucial
@@ -17,16 +19,45 @@ aligned with business logic.
 
 ## Layout and Building Blocks
 
-When designing Kafka Streams Topology Diagrams, the key components are:
+### Orientation
+> TLDR: go **'left to right'**
 
-- **Header**
-- **Main Block** (left to right):
+KSTD recommends, but does not mandate a certain orientation or direction, but the library was created to work best for a 'left to right'
+direction of data flows.
+
+All examples provided are created in landscape orientation and show data flows from left (sources) to the right (sinks).
+
+### Header; Body; Footer
+
+When designing Kafka Streams Topology Diagrams, the key layout blocks are:
+
+- **Header**: Title, diagram type, date, and version. *(ref [Architecture Diagram - Best Practices](/guide/architecture-diagrams-best-practices/))*
+- **Main Body**: (left to right)
   - **Source Topics**
-  - **Topology**
+  - **Topology**: The detailed design of the Kafka Streams application, the heart of the diagram.
   - **Sink Topics**
-- **Footer**
+- **Footer**: (Optional) Place additional description, such as key responsibilities and processing logic for steps and operators.
 
-!!!TODO: provide pictures with the building blocks highlighted.!!!
+<AstroFancyCarousel autoplay={3500} classAppend="!mb-12" images={[
+  {
+    src: '/assets/guide/standard/kstd-standard-layout-and-building-blocks_1.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Layout and Building Blocks - Header, Main, Footer",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-layout-and-building-blocks_2.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Layout and Building Blocks - Main - Source Topics, Topology, Sink Topics",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-layout-and-building-blocks_3.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Layout and Building Blocks - Raw Diagram",
+  },
+]} gallery="layout-and-building-blocks"/>
 
 > **Note**: Typically, a single topology is depicted per diagram, though in some cases, smaller sidecar topologies may accompany the main topology.
 
@@ -39,29 +70,55 @@ The topology is the core of the entire diagram. While there are no strict rules 
 - **Grouped PAPI Elements**: For complex use cases—such as those involving the *Processor API*, *State Stores*, *Interactive Queries*, or *Punctuators* — it can be useful to group related elements within an additional box. This provides a clear visual distinction of their logical association within the topology.
 - **Descriptions**: A general rule of thub, when it comes to adding descriptions to the diagram, is to use inline descriptions sparingly. If there's a sufficient level of complexity and therefore descriptions to add, consider placing them outside the Topology in the *Footer* block.
 
-> TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
+<AstroFancyCarousel autoplay={3500} classAppend="!mb-12" images={[
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_1.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Sub-topologies",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_2.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Grouped PAPI Elements",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_3.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Descriptions",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-topology-layout-and-internals_4.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Topology Layout and Internals - Raw Diagram",
+  },
+]} gallery="topology-layout-and-internals"/>
 
+### Swimlanes
 
+Swimlanes are a visual organization technique used in diagrams to clearly delineate processes, and workflows across
+functional areas.
 
-### Topology Layout and Internals
+In KSTD swimlanes are not actively drawn, but maintaining consistent alignment for processing steps of individual streams
+has proven to improve readability of designs.
 
-The topology is the heart of the overall Diagram.
-Within the topology no clear rules are defined, but
-
-When experienced enough and important to the topology design, include sub-topologies into your diagram.
-Please be aware that sub-topologies are automatically resolved by Kafka Streams and are therefore outside of the developer's control.
-
-Complex use-cases that involve e.g. the Processor API, State Stores, Interactive Queries, and Punctuators, may be logically wrapped in an additional, virtual box highlighting the affiliation.
-
-> TODO: provide pictures with the 'Topology Layout and Internals' highlighted.
-
-## Orientation
-> TLDR: **'left to right'**
-
-KSTD recommends, but does not mandate a certain orientation or direction, but the library was created to work best for a 'left to right'
-direction of data flows.
-
-All examples provided are created in landscape orientation and show data flows from left (sources) to the right (sinks).
+<AstroFancyCarousel autoplay={false} classAppend="!mb-12" images={[
+  {
+    src: '/assets/guide/standard/kstd-standard-swimlanes_1.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Swimlanes",
+  },
+  {
+    src: '/assets/guide/standard/kstd-standard-swimlanes_2.svg',
+    width: 3240,
+    height: 1770,
+    alt: "KSTD Standard - Raw Diagram",
+  },
+]} gallery="swimlanes"/>
 
 ## Naming Conventions
 

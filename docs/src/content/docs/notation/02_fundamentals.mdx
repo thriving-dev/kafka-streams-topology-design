@@ -1,9 +1,12 @@
 ---
-title: Basics
-description: TODO
-slug: notation/basics
+title: Fundamentals
+description: This page covers essential components like headers, topologies, sub-topologies, legends, and watermarks, ensuring a structured approach to designing Kafka Streams topologies.
+slug: notation/fundamentals
 sidebar:
   order: 2
+head:
+  - tag: title
+    content: Notation > Basics | The standard for designing and visualising Kafka Streams Topologies
 ---
 
 import LibraryComponent from "../../../components/notation/LibraryComponent.astro";
@@ -38,10 +41,10 @@ import LibraryComponent from "../../../components/notation/LibraryComponent.astr
                                      <li>For everything else (e.g. IQ, RPC, or other access patterns), a dashed line arrow is used.</li></ol>
                                  </p>
                                <p>Then there's the representation used for topics and state stores.</p>
-                               <p>Last but not least a reference and link to the KSTD docs.</p>"/>
+                               <p>Last but not least a reference and link to the KSTD docs.</p>"
+/>
 <LibraryComponent name="kstd-legend-landscape" width={530} description="" />
 
 ### KSTD Watermark
 <LibraryComponent name="kstd-watermark" title="Watermark and link to the website" description="<br/>Spread the word, support KSTD! 🦦 ❤️" width={276} />
-
 
