@@ -1,6 +1,7 @@
 ---
 interface Props {
   image: string;
+  imagePreview?: string;
   width: number;
   height: number;
   alt?: string;
@@ -11,6 +12,7 @@ interface Props {
 
 const {
   image,
+    imagePreview = "",
   width,
   height,
   alt = "",
@@ -26,7 +28,7 @@ const {
                 data-image={image}>
     <a href={image} data-fancybox={gallery} data-caption={caption}>
         <img class="cursor-zoom-in"
-             src={image}
+             src={imagePreview || image}
              width={width}
              height={height}
              alt={alt}
