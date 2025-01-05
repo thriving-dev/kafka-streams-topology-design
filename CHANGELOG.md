@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.0-beta.2
+The Excalidraw component library contains *67 shapes*.
+[Install v1.0.0-beta.2](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-beta.2.excalidrawlib).
+
+### Notable changes
+
+#### Updates to the Documentation
+
+* Improves existing documentation 
+  * KSTD Standard: added diagrams for 'Topology Layout and Internals' and new section on 'Swimlanes'
+  * Design Principles: Improved section 'Crafting Software Architecture Diagrams', added references to library components
+  * Architecture Diagram - Best Practices: improved clarity and text formatting
+* Adds new documentation page: 'Tips and Tricks'
+* Minor update to the example: 'User Flight Booking - Status Update Notifications'
+* Misc. improvements to the website
+
+
 ## Version 1.0.0-beta.1
 The Excalidraw component library contains *67 shapes*.
 [Install v1.0.0-beta.1](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-beta.1.excalidrawlib).
