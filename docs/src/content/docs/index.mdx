@@ -13,7 +13,7 @@ head:
 ---
 
 import { Icon } from 'astro-icon/components'
-import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
+import { LinkButton } from '@astrojs/starlight/components';
 import { Highlights, Highlight, Hero, Feature, Panel, TwoCols } from '../../components';
 import GlobalMediumZoom from '../../components/global/GlobalMediumZoom.astro';
 import { globals } from '../../globals';
@@ -25,9 +25,9 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
       darkImage="../assets/logo1_XL.png"
 >
     <div class="sl-flex actions">
-        <CallToAction link="/guide/getting-started/" icon={{type: 'icon', name: 'right-arrow'}} variant="primary" set:html="Getting Started" />
-        <CallToAction link="/guide/kstd-standard/" icon={{type: 'icon', name: 'right-arrow'}} variant="secondary" set:html="Read the docs" />
-        <CallToAction attrs={{class: "minimal", target: "_blank"}} link={globals.lib.install} icon={{type: 'icon', name: 'external'}} set:html="TLDR; Install library" />
+        <LinkButton href="/guide/getting-started/" icon="right-arrow" variant="primary" set:html="Getting Started" />
+        <LinkButton href="/guide/kstd-standard/" icon="right-arrow" variant="secondary" set:html="Read the docs" />
+        <LinkButton href={globals.lib.install} icon="external" variant="minimal" set:html="TLDR; Install library" attrs={{class: "minimal", target: "_blank"}} />
     </div>
 </Hero>
 
@@ -307,8 +307,8 @@ import AstroFancyCarousel from '../../components/AstroFancyCarousel.astro'
     tagline="Avoid Mistakes. Save Time. Build Trust.<br/>Create High-Quality Designs & Applications!"
     centered>
     <div class="w-full text-center [&>a]:!inline-flex">
-        <CallToAction link="/guide/getting-started/" variant="primary" set:html="Get started" />
-        <CallToAction link="/guide/kstd-standard/" icon={{type: 'icon', name: 'right-arrow'}} variant="external" set:html="Learn more" />
+        <LinkButton href="/guide/getting-started/" variant="primary" set:html="Get started" />
+        <LinkButton href="/guide/kstd-standard/" icon="right-arrow" variant="external" set:html="Learn more" />
     </div>
 </Panel>
 

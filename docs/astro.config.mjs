@@ -58,8 +58,7 @@ export default defineConfig({
       },
     },
   },
-  // output: "static",
-  output: "hybrid",
+  output: "static",
   adapter: vercel({
     webAnalytics: { enabled: true },
   }),
