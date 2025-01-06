@@ -152,6 +152,18 @@ code {
     @apply [&_button]:!mb-0;
 }
 
+.sl-link-button {
+    margin-inline-end: 0rem !important;
+    @apply font-medium;
+}
+.sl-link-button:not(:where(p *)) {
+    margin-block: 0rem !important;
+}
+.sl-link-button.secondary {
+    border: 1px solid;
+    border-color: unset !important;
+}
+
 /*astro-fancy-carousel {*/
 /*    @apply !h-[498px];*/
 /*}*/
