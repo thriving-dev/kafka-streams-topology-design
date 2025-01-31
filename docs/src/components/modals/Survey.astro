@@ -1,6 +1,6 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
-import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
+import { LinkButton } from '@astrojs/starlight/components';
 import { globals } from '../../globals';
 ---
 
@@ -11,9 +11,8 @@ import { globals } from '../../globals';
             <div class="text-xl font-bold pt-2">{globals.survey.title}</div>
             <div class="pt-5"  set:html={globals.survey.descriptionHtml} />
             <div class="pt-5 flex gap-4 justify-center [&>a]:px-4 [&>a]:py-2 [&>a]:rounded-lg">
-                <CallToAction link={globals.survey.link} attrs={{ target: "_blank" }} variant="primary" set:html="Take the Survey 📝"/>
-                <CallToAction link="#" attrs={{ id: "close-modal" }} icon={{ type: 'icon', name: 'close' }}
-                              variant="secondary" set:html="Close"/>
+                <LinkButton href={globals.survey.link} target="_blank" variant="primary" set:html="Take the Survey 📝"/>
+                <LinkButton href="#" id="close-modal" icon="close" variant="secondary" set:html="Close"/>
             </div>
         </div>
     </div>
