@@ -2,6 +2,7 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageFrame.astro';
 import Footer from '../layout/Footer.astro';
+import Survey from '../modals/Survey.astro'
 ---
 
 <Default {...Astro.props}>
@@ -10,3 +11,5 @@ import Footer from '../layout/Footer.astro';
     <slot name="sidebar" slot="sidebar" />
 </Default>
 <Footer {...Astro.props}/>
+
+<Survey {...Astro.props}/>

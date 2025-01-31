@@ -1,4 +1,17 @@
 ---
+import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
+import { globals } from '../../globals';
 ---
 
-<div class="hide-content-panel"></div>
+{globals.survey ?
+    <div class="banner-content-panel survey-banner">
+        <div class="text-xl font-bold pt-2">{globals.survey.title}</div>
+        <div class="pt-5"  set:html={globals.survey.descriptionHtml} />
+        <div class="pt-4 flex gap-4 [&>a]:px-4 [&>a]:py-2 [&>a]:rounded-lg">
+            <CallToAction link={globals.survey.link} attrs={{ target: "_blank" }} variant="primary"
+                          set:html="📝 Take the Survey"/>
+        </div>
+    </div>
+:
+    <div class="hide-content-panel"></div>
+}

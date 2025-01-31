@@ -1,0 +1,59 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
+import { globals } from '../../globals';
+---
+
+{globals.survey &&
+
+    <div id="modal" class="fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-[1000] hidden">
+        <div class="modal-content bg-green-300 p-6 mx-4 rounded-lg text-center max-w-[600px] shadow-2xl">
+            <div class="text-xl font-bold pt-2">{globals.survey.title}</div>
+            <div class="pt-5"  set:html={globals.survey.descriptionHtml} />
+            <div class="pt-5 flex gap-4 justify-center [&>a]:px-4 [&>a]:py-2 [&>a]:rounded-lg">
+                <CallToAction link={globals.survey.link} attrs={{ target: "_blank" }} variant="primary" set:html="Take the Survey 📝"/>
+                <CallToAction link="#" attrs={{ id: "close-modal" }} icon={{ type: 'icon', name: 'close' }}
+                              variant="secondary" set:html="Close"/>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      function setCookie(name, value, days) {
+        const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+      }
+
+      function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
+      }
+
+      // Check if the user agent is a bot
+      function isBot() {
+        const botPattern = /bot|crawl|spider|slurp|mediapartners|adsbot|google|bing|baidu|yandex|duckduckbot|yahoo|sogou/i;
+        return botPattern.test(navigator.userAgent);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('modal');
+        const closeModalButton = document.getElementById('close-modal');
+
+        // Suppress the modal if the user agent is a bot
+        if (isBot()) {
+          return;
+        }
+
+        if (!getCookie('surveyClosed')) {
+          modal.classList.remove('hidden');
+        }
+
+        closeModalButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          modal.classList.add('hidden');
+          setCookie('surveyClosed', 'true', 14); // Set the cookie for 14 days
+        });
+      });
+    </script>
+
+}
