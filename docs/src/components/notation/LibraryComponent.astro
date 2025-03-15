@@ -9,6 +9,8 @@ interface Props {
   title?: string;
   description?: string;
   classAppend?: string;
+  operation: string;
+  notes: string;
 }
 
 const {
@@ -18,13 +20,14 @@ const {
   title = null,
   description = "Description coming soon...",
   classAppend = "",
+  operation = "",
+  notes = "",
 } = Astro.props;
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const version = '1.0.0-beta.1'
 const assetsPath = `../../assets/lib/components`
 const images = import.meta.glob<{ default: ImageMetadata }>("../../assets/lib/components/*");
 const image = img ? img() : images[`${assetsPath}/${name}.svg`]()
@@ -43,6 +46,12 @@ const image = img ? img() : images[`${assetsPath}/${name}.svg`]()
         <div class="!mt-1">
           {title && <span class="font-bold">{title}</span>}
             <span set:html={description}/>
+            { operation && (
+                <p class="!mt-2 text-neutral-700" set:html={`# <span class='font-medium'>${operation}</span> operation.`}/>
+            )}
+            { notes && (
+                <p class="!mt-2" set:html={notes}/>
+            )}
         </div>
     </div>
 

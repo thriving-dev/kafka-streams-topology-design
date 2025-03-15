@@ -1,8 +1,8 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/SocialIcons.astro';
-const isHomePage = Astro.props.slug === '';
-const isAboutPage = Astro.props.slug === 'about';
+const isHomePage = Astro.locals.starlightRoute.id === '';
+const isAboutPage = Astro.locals.starlightRoute.id === 'about';
 import { globals } from '../../globals';
 ---
 

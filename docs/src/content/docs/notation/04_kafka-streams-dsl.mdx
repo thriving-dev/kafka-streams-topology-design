@@ -9,6 +9,7 @@ head:
     content: Notation > Kafka Streams DSL | The standard for designing and visualising Kafka Streams Topologies
 ---
 
+import { Aside } from '@astrojs/starlight/components';
 import LibraryComponent from "../../../components/notation/LibraryComponent.astro";
 
 # {frontmatter.title}
@@ -21,91 +22,102 @@ Essentially, the DSL provides a higher level of abstraction, on top of the Proce
 
 ## Components
 
-### KStream
-<LibraryComponent name="dsl-kstream" width={64} description="<p><b>KStream</b> is an abstraction of a record stream of KeyValue pairs. A KStream is either defined from one or multiple Kafka topics that are consumed message by message or the result of a KStream transformation.</p>
-<p>Stateless.</p>"/>
+<Aside>
+  Some of the visual components cover _multiple operations_ that functionally belong closely together.
+  Example: `filter` vs. `filterNot`.
 
-### KTable
-<LibraryComponent name="dsl-ktable" width={64} description="<p><b>KTable</b> is an abstraction representing a changelog stream, where each record is an update to a key's latest value, providing an up-to-date view of a table-like data structure.</p>
-<p>Stateful.</p>"/>
+  To avoid bloating the Excalidraw library with _identical_ components that _differ only by label_, such varieties have to be accounted for by the user.
+
+  => to get a `leftJoin`, take the `join` component and _modify+ the label.
+  ("double-double" click on the text)
+</Aside>
+
+### KStream; toStream
+<LibraryComponent name="dsl-kstream" width={64} description="<p><b>KStream</b> is an abstraction of a record stream of KeyValue pairs. A KStream is either defined from one or multiple Kafka topics that are consumed message by message or the result of a KStream transformation.</p>"
+operation="Stateless"/>
+
+### KTable; toTable
+<LibraryComponent name="dsl-ktable" width={64} description="<p><b>KTable</b> is an abstraction representing a changelog stream, where each record is an update to a key's latest value, providing an up-to-date view of a table-like data structure.</p>"
+operation="Stateful"/>
 
 ### GlobalKTable
-<LibraryComponent name="dsl-global-ktable" width={64} description="<p><b>GlobalKTable</b> is a special type of KTable where the entire table is replicated to every instance of your Kafka Streams application, enabling lookups across all partitions.</p>
-<p>Stateful.</p>"/>
+<LibraryComponent name="dsl-global-ktable" width={64} description="<p><b>GlobalKTable</b> is a special type of KTable where the entire table is replicated to every instance of your Kafka Streams application, enabling lookups across all partitions.</p>"
+operation="Stateful"/>
 
-### filter
-<LibraryComponent name="dsl-filter" width={64} description="<p><b>filter</b> filters records based on a specified predicate, allowing only records that satisfy the condition to pass through.</p>
-<p>Stateless operation.</p>"/>
+### filter; filterNot
+<LibraryComponent name="dsl-filter" width={64} description="<p><b>filter</b>s records based on a specified predicate, allowing only records that satisfy the condition to pass through.</p>"
+operation="Stateful"/>
 
 ### map
-<LibraryComponent name="dsl-map" width={84} description="<p><b>map</b> transforms each input record into a new key-value pair by applying a user-specified function to both the key and value.</p>
-<p>Stateless, key-changing operation.</p>"/>
+<LibraryComponent name="dsl-map" width={84} description="<p><b>map</b> transforms each input record into a new key-value pair by applying a user-specified function to both the key and value.</p>"
+operation="Stateless, key-changing"/>
 
 ### mapValues
-<LibraryComponent name="dsl-mapValues" width={95} description="<p><b>mapValues</b> applies a function to the value of each input record, producing a new value while keeping the key unchanged.</p>
-<p>Stateless operation.</p>"/>
+<LibraryComponent name="dsl-mapValues" width={95} description="<p><b>mapValues</b> applies a function to the value of each input record, producing a new value while keeping the key unchanged.</p>"
+operation="Stateless"/>
 
 ### flatMap
-<LibraryComponent name="dsl-flatMap" width={104} description="<p><b>flatMap</b> transforms each input record into zero or more key-value pairs, effectively allowing one input record to produce multiple output records.</p>
-<p>Stateless, key-changing operation.</p>"/>
+<LibraryComponent name="dsl-flatMap" width={104} description="<p><b>flatMap</b> transforms each input record into zero or more key-value pairs, effectively allowing one input record to produce multiple output records.</p>"
+operation="Stateless, key-changing"/>
 
 ### flatMapValues
-<LibraryComponent name="dsl-flatMapValues" width={128} description="<p><b>flatMapValues</b> applies a transformation function to each value, potentially producing multiple output values for each input record, while retaining the same key.</p>
-<p>Stateless operation.</p>"/>
+<LibraryComponent name="dsl-flatMapValues" width={128} description="<p><b>flatMapValues</b> applies a transformation function to each value, potentially producing multiple output values for each input record, while retaining the same key.</p>"
+operation="Stateless"/>
 
 ### process
-<LibraryComponent name="dsl-process" width={84} description="<p><b>process</b> allows custom processing of each record through a user-defined Processor API, enabling complex transformations and interactions with state stores.</p>
-<p>Potentially stateful and/or key-changing operation.</p>"/>
+<LibraryComponent name="dsl-process" width={84} description="<p><b>process</b> allows custom processing of each record through a user-defined Processor API, enabling complex transformations and interactions with state stores.</p>"
+operation="Potentially stateful and/or key-changing"/>
 
 ### processValues
-<LibraryComponent name="dsl-processValues" width={124} description="<p><b>processValues</b> is a specialized operation that applies custom processing logic only to the values of records, while keeping the keys unchanged.</p>
-<p>Potentially stateful operation.</p>"/>
+<LibraryComponent name="dsl-processValues" width={124} description="<p><b>processValues</b> is a specialized operation that applies custom processing logic only to the values of records, while keeping the keys unchanged.</p>"
+operation="Potentially stateful"/>
 
 ### transformValues
-<LibraryComponent name="dsl-transformValues" width={143} description="<p><b>transformValues</b> applies a stateful or stateless transformation function to the values of input records, offering flexibility in modifying the data flow.</p>
-<p>Stateful operation (KTable).</p>
-<p><i>Note: <code>transform</code> & <code>transformValues</code> also exist for KStream, but are deprecated. Use <code>process</code>/<code>processValues</code> instead.</i></p>"/>
+<LibraryComponent name="dsl-transformValues" width={143} description="<p><b>transformValues</b> applies a stateful or stateless transformation function to the values of input records, offering flexibility in modifying the data flow.</p>"
+operation="Stateful (KTable)"
+notes="<i>Note: <code>transform</code> & <code>transformValues</code> also exist for KStream, but are deprecated. Use <code>process</code>/<code>processValues</code> instead.</i>"/>
 
-### split
-<LibraryComponent name="dsl-split" width={64} description="<p><b>split</b> splits a KStream into multiple branches based on a user-defined predicate, allowing different parts of the stream to be processed separately.</p>
-<p>Stateless operation.</p>"/>
+
+### split + branch
+<LibraryComponent name="dsl-split" width={64} description="<p><b>split</b> splits a KStream into multiple branches based on a user-defined predicate, allowing different parts of the stream to be processed separately.</p>"
+operation="Stateless"/>
 
 ### merge
-<LibraryComponent name="dsl-merge" width={64} description="<p><b>merge</b> merges two or more KStreams into a single stream, combining records from all input streams into one output stream.</p>
-<p>Stateless operation.</p>"/>
+<LibraryComponent name="dsl-merge" width={64} description="<p><b>merge</b> merges two or more KStreams into a single stream, combining records from all input streams into one output stream.</p>"
+operation="Stateless"/>
 
-### join
-<LibraryComponent name="dsl-join" width={64} description="<p><b>join</b> combines records from two KStreams or a KStream and a KTable, matching records with the same key within a defined time window.</p>
-<p>Stateful operation.</p>"/>
+### join; leftJoin; outerJoin
+<LibraryComponent name="dsl-join" width={64} description="<p><b>join</b> combines records from two KStreams or a KStream and a KTable, matching records with the same key within a defined time window.</p>"
+operation="Stateful"/>
 
-<LibraryComponent name="dsl-join-key-changing" width={84} description="<p><b>join (key-changing)</b> allows records with non-matching keys to be joined by applying a custom key-changing logic, enabling joins beyond simple key equality.</p>
-<p>Stateful, key-changing operation.</p>"/>
+<LibraryComponent name="dsl-join-key-changing" width={84} description="<p><b>join (key-changing)</b> allows records with non-matching keys to be joined by applying a custom key-changing logic, enabling joins beyond simple key equality.</p>"
+operation="Stateful, key-changing"/>
 
 ### repartition
-<LibraryComponent name="dsl-repartition" width={98} description="<p><b>repartition</b> redistributes records across partitions based on a new key, ensuring even distribution of data across the stream processing instances.</p>
-<p>Stateless, key-changing operation.</p>"/>
+<LibraryComponent name="dsl-repartition" width={98} description="<p><b>repartition</b> redistributes records across partitions based on a new key, ensuring even distribution of data across the stream processing instances.</p>"
+operation="Stateless, key-changing"/>
 
 ### selectKey
-<LibraryComponent name="dsl-selectKey" width={90} description="<p><b>selectKey</b> changes the key of each record by applying a user-defined function, allowing repartitioning based on a new key.</p>
-<p>Stateless, key-changing operation.</p>"/>
+<LibraryComponent name="dsl-selectKey" width={90} description="<p><b>selectKey</b> changes the key of each record by applying a user-defined function, allowing repartitioning based on a new key.</p>"
+operation="Stateless, key-changing"/>
 
-### groupBy
-<LibraryComponent name="dsl-groupBy" width={84} description="<p><b>groupBy</b> groups records by a new key, typically used before performing stateful operations such as aggregations.</p>
-<p>Stateless, key-changing operation.</p>"/>
+### groupBy; groupByKey; cogroup
+<LibraryComponent name="dsl-groupBy" width={84} description="<p><b>groupBy</b> groups records by a new key, typically used before performing stateful operations such as aggregations.</p>"
+operation="Stateless, key-changing (...for groupBy)"/>
 
-### reduce / aggregate
-<LibraryComponent name="dsl-reduce-aggregate" width={95} description="<p><b>reduce / aggregate</b> combines records sharing the same key into a single result using either a reduction or aggregation function.</p>
-<p>Stateful operation.</p>"/>
+### reduce; aggregate
+<LibraryComponent name="dsl-reduce-aggregate" width={95} description="<p><b>reduce / aggregate</b> combines records sharing the same key into a single result using either a reduction or aggregation function.</p>"
+operation="Stateful"/>
 
 ### count
-<LibraryComponent name="dsl-count" width={64} description="<p><b>count</b> counts the number of records for each key, resulting in a KTable where each key holds the current count of records.</p>
-<p>Stateful operation.</p>"/>
+<LibraryComponent name="dsl-count" width={64} description="<p><b>count</b> counts the number of records for each key, resulting in a KTable where each key holds the current count of records.</p>"
+operation="Stateful"/>
 
 ### peek
-<LibraryComponent name="dsl-peek" width={64} description="<p><b>peek</b> allows inspecting or logging each record passing through the stream without modifying the stream or producing any output.</p>
-<p>Stateless operation.</p>"/>
+<LibraryComponent name="dsl-peek" width={64} description="<p><b>peek</b> allows inspecting or logging each record passing through the stream without modifying the stream or producing any output.</p>"
+operation="Stateless"/>
 
 ### forEach
-<LibraryComponent name="dsl-forEach" width={77} description="<p><b>forEach</b> applies a side-effect operation to each record, such as logging or interacting with external systems, without producing a new stream.</p>
-<p>Stateless, terminal operation.</p>"/>
+<LibraryComponent name="dsl-forEach" width={77} description="<p><b>forEach</b> applies a side-effect operation to each record, such as logging or interacting with external systems, without producing a new stream.</p>"
+operation="Stateless, terminal"/>
 

@@ -86,6 +86,9 @@ h1 {
 .actions {
     @apply gap-x-4 lg:gap-x-8 gap-y-4 flex-wrap justify-center min-[800px]:justify-normal;
 }
+.actions > .minimal {
+    @apply underline underline-offset-2;
+}
 
 a {
     @apply underline underline-offset-1 decoration-1 text-[var(--sl-color-text-accent)] decoration-[#4f46e566] dark:decoration-[#c7d2fe66];
@@ -153,6 +156,18 @@ code {
 }
 .f-carousel__dots {
     @apply [&_button]:!mb-0;
+}
+
+.sl-link-button {
+    margin-inline-end: 0rem !important;
+    @apply font-medium;
+}
+.sl-link-button:not(:where(p *)) {
+    margin-block: 0rem !important;
+}
+.sl-link-button.secondary {
+    border: 1px solid;
+    border-color: unset !important;
 }
 
 /*astro-fancy-carousel {*/

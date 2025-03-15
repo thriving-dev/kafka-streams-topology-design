@@ -6,7 +6,7 @@ sidebar:
   order: 1
 ---
 
-import CallToAction from '@astrojs/starlight/components/CallToAction.astro';
+import { LinkButton } from '@astrojs/starlight/components';
 import { TwoCols } from '/src/components';
 import { globals } from '../../../globals';
 
@@ -21,9 +21,9 @@ component library to the drawing tool Excalidraw.
 
 
 <div class="sl-flex">
-    <CallToAction attrs={{class: "minimal !px-4", target: "_blank"}}
-                  link={globals.lib.install}
-                  icon={{type: 'icon', name: 'external'}}
+    <LinkButton class="!px-4" target="_blank"
+                  href={globals.lib.install}
+                  icon="external"
                   variant="primary"
                   set:html="Install"/>
 </div>
