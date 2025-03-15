@@ -20,6 +20,19 @@ import { AstroFancybox } from '/src/components';
   Versioning technical diagrams enables traceability, change tracking, collaborative editing,
   aligns diagrams with evolving design states while maintaining documentation accuracy.
 
+  ### Diagram History: Keeping Minor Iterations on the Canvas
+
+  As you progress with the design and introduce _minor_ or _major_ changes, it's a good pattern to just clone the entire previous minor diagram to a new draft right below and bump the diagram version in the header.
+
+  > E.g. this is how my latest excalidraw WIP document looks like:<br/>
+  > <AstroFancybox image="/assets/guide/tips-and-tricks/example-with-history_1.png" imagePreview="/assets/guide/tips-and-tricks/example-with-history_1-preview.png" width={6701} height={8084} classAppend="!my-4" caption="Example: WIP document with progress history" alt="KSTD Docs, Tips & Tricks, WIP document with progress history"/>
+  > (`kstd-example_user-booking-flight-status-notifications_WIP.excalidraw`)
+  >
+  > ☝️ The diagram was cloned for each minor version bump.
+
+
+  This works fine with the filename rotation pattern introduced above, you just keep a history as you progress with the design for reference.
+
   ### Versioning Patterns
   Choose any versioning pattern of your choice.<br/>
   Prominent examples are:
@@ -78,19 +91,6 @@ import { AstroFancybox } from '/src/components';
   branching, tagging and release process.
 
   Just note that due to the lack of automation, there's a good chance for the version used in the diagram(s) to deviate from e.g. git tags.
-
-  ### Diagram History: Keeping Minor Iterations on the Canvas
-
-  As you progress with the design and introduce _minor_ or _major_ changes, it's a good pattern to just clone the entire previous minor diagram to a new draft right below and bump the diagram version in the header.
-
-  > E.g. this is how my latest excalidraw WIP document looks like:<br/>
-  > <AstroFancybox image="/assets/guide/tips-and-tricks/example-with-history_1.png" imagePreview="/assets/guide/tips-and-tricks/example-with-history_1-preview.png" width={6701} height={8084} classAppend="!my-4" caption="Example: WIP document with progress history" alt="KSTD Docs, Tips & Tricks, WIP document with progress history"/>
-  > (`kstd-example_user-booking-flight-status-notifications_WIP.excalidraw`)
-  >
-  > ☝️ The diagram was cloned for each minor version bump.
-
-
-  This works fine with the filename rotation pattern introduced above, you just keep a history as you progress with the design for reference.
 
   ## Excalidraw Tips
 

@@ -2,9 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.0-beta.3
+The Excalidraw component library contains *67 shapes*.
+
+### Notable changes
+
+#### Updates to the Documentation
+
+* Improves existing documentation 
+  * KSTD Standard: all API varieties of similar operations are documented    
+    (e.g. `filter` <-> `filterNot`) 
+* Minor update to the example: 'Ecommerce Product View'
+
+#### Cosmetic improvements
+- updated text for 'split' -> 'split +branch'
+- updated text for 'reduce, aggregate' -> 'reduce; aggregate'       
+  (after adding the operator, edit the text and remove one of the two)
+
+
 ## Version 1.0.0-beta.2
 The Excalidraw component library contains *67 shapes*.
-[Install v1.0.0-beta.2](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-beta.2.excalidrawlib).
 
 ### Notable changes
 
@@ -21,7 +38,6 @@ The Excalidraw component library contains *67 shapes*.
 
 ## Version 1.0.0-beta.1
 The Excalidraw component library contains *67 shapes*.
-[Install v1.0.0-beta.1](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-beta.1.excalidrawlib).
 
 ### Notable changes
 
@@ -37,7 +53,6 @@ Various library components' visual look was slightly improved.
 
 ## Version 1.0.0-alpha.4
 The Excalidraw component library contains *67 shapes*.
-[Install v1.0.0-alpha.4](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-alpha.4.excalidrawlib).
 
 ### Notable changes
 
@@ -87,4 +102,3 @@ PS: The new shapes, part of the new 'Legend' component, are shown below.
 This is the initial version that is made available for closed alpha testing.
 
 The Excalidraw component library holds *59 shapes*.
-[Install v1.0.0-alpha.3](https://excalidraw.com/#addLibrary=https%3A%2F%2Fraw.githubusercontent.com%2Fthriving-dev%2Fkafka-streams-topology-design%2Fmain%2Flib%2Fkafka-streams-topology-design_v1.0.0-alpha.3.excalidrawlib).

@@ -86,6 +86,9 @@ h1 {
 .actions {
     @apply gap-x-4 lg:gap-x-8 gap-y-4 flex-wrap justify-center min-[800px]:justify-normal;
 }
+.actions > .minimal {
+    @apply underline underline-offset-2;
+}
 
 a {
     @apply underline underline-offset-1 decoration-1 text-[var(--sl-color-text-accent)] decoration-[#4f46e566] dark:decoration-[#c7d2fe66];
