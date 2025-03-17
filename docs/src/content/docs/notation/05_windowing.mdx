@@ -22,6 +22,47 @@ Reference: https://developer.confluent.io/courses/kafka-streams/windowing/
 
 ### Windowed
 <LibraryComponent name="windowed" width={140}
-                  description="<p><b>windowed</b> stream processing groups records by their keys within a defined time window, allowing operations like joins or aggregations to be performed on data that occurs within the same time range.</p>
-                  <p>Kafka Streams supports the following window types:<br/>[Tumbling; Sliding; Hopping; Session]</p>"/>
+                  description="<p><b>windowed</b> stream processing groups records by their keys within a defined time window, allowing operations like joins or aggregations to be performed on data that occurs within the same time range.</p>"/>
+
+\# <span class='font-medium'>Window Types</span>
+<ul class='!mt-2 leading-5'>
+  <li><span class='font-medium'>Tumbling</span>: Fixed-size, non-overlapping windows.</li>
+  <li><span class='font-medium'>Hopping</span>: Overlapping windows with a fixed size and hop interval.</li>
+  <li><span class='font-medium'>Session</span>: Dynamically sized windows based on gaps of inactivity.</li>
+  <li><span class='font-medium'>Sliding</span>: Continuously moving time intervals, each time a record enters a defined timespan.</li>
+</ul>
+
+
+### Emit Strategy
+
+<LibraryComponent name="windowed-emit-on-update" width={155}
+description="<p><b>Emit on update</b> strategy emits a new, updated window result every time the aggregated state changes due to incoming records.</p>"/>
+
+<LibraryComponent name="windowed-emit-on-close" width={141}
+description="<p><b>Emit on close</b> strategy emits the final result only once when the window is considered complete and closed.</p>"/>
+
+### Suppressed
+
+<LibraryComponent name="windowed-suppressed" width={125}
+description="<p><b>Suppressed</b> is an operator that buffers intermediate results and only forwards the final aggregate once the window is complete (or after a defined grace period).</p>"/>
+
+\# <span class='font-medium'>Suppressed Types</span>
+<ul class='!mt-2 leading-5'>
+  <li><span class='font-medium'>untilWindowCloses</span>: Buffers all intermediate results and emits only the final result when the window fully closes.</li>
+  <li><span class='font-medium'>untilTimeLimit</span>: Buffers intermediate results and emits them either after a specified time limit or when the window closes, whichever comes first.</li>
+</ul>
+
+\# <span class='font-medium'>BufferConfig Choices</span>
+<ul class='!mt-2 leading-5'>
+  <li><span class='font-medium'>unbounded</span>: a buffer unconstrained by size (either keys or bytes).</li>
+  <li><span class='font-medium'>maxBytes</span>: a size-constrained buffer in terms of the maximum number of bytes it will use.</li>
+  <li><span class='font-medium'>maxRecords</span>: a size-constrained buffer in terms of the maximum number of keys it will store.</li>
+</ul>
+
+\# <span class='font-medium'>Buffer WhenFull Behaviour</span>
+<ul class='!mt-2 leading-5'>
+  <li><span class='font-medium'>emitEarlyWhenFull</span>: just emit the oldest records when any of its constraints are violated.</li>
+  <li><span class='font-medium'>shutDownWhenFull</span>: gracefully shut down the application when any of its constraints are violated</li>
+</ul>
+
 

@@ -78,8 +78,8 @@ operation="Stateful (KTable)"
 notes="<i>Note: <code>transform</code> & <code>transformValues</code> also exist for KStream, but are deprecated. Use <code>process</code>/<code>processValues</code> instead.</i>"/>
 
 
-### split + branch
-<LibraryComponent name="dsl-split" width={64} description="<p><b>split</b> splits a KStream into multiple branches based on a user-defined predicate, allowing different parts of the stream to be processed separately.</p>"
+### split +branch
+<LibraryComponent name="dsl-split-branch" width={64} description="<p><b>split</b> splits a KStream into multiple branches based on a user-defined predicate, allowing different parts of the stream to be processed separately.</p>"
 operation="Stateless"/>
 
 ### merge
@@ -104,6 +104,10 @@ operation="Stateless, key-changing"/>
 ### groupBy; groupByKey; cogroup
 <LibraryComponent name="dsl-groupBy" width={84} description="<p><b>groupBy</b> groups records by a new key, typically used before performing stateful operations such as aggregations.</p>"
 operation="Stateless, key-changing (...for groupBy)"/>
+
+### windowedBy
+<LibraryComponent name="dsl-windowed-by" width={102} description="<p><b>windowedBy</b> applies a time windowing strategy to a grouped stream, partitioning records into defined intervals for subsequent aggregations.</p>"
+operation="Stateful"/>
 
 ### reduce; aggregate
 <LibraryComponent name="dsl-reduce-aggregate" width={95} description="<p><b>reduce / aggregate</b> combines records sharing the same key into a single result using either a reduction or aggregation function.</p>"
