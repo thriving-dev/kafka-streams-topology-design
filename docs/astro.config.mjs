@@ -17,7 +17,6 @@ export default defineConfig({
     },
     social: {
       linkedin: 'https://www.linkedin.com/in/hartmut-co-uk/',
-      twitter: 'https://twitter.com/TheThrivingDev',
       github: 'https://github.com/thriving-dev/kafka-streams-topology-design',
     },
     sidebar: [{
