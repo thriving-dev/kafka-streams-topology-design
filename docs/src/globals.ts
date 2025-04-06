@@ -1,11 +1,11 @@
 export const globals = {
-  latestVersion: '1.0.0-beta.3',
+  latestVersion: '1.0.0',
   parent: 'https://thriving.dev',
   github: 'https://github.com/thriving-dev/kafka-streams-topology-design',
   linkedin: 'https://www.linkedin.com/in/hartmut-co-uk/',
   lib: {
-    filename: 'kafka-streams-topology-design_v1.0.0-beta.3.excalidrawlib',
-    download: 'https://raw.githubusercontent.com/thriving-dev/kafka-streams-topology-design/main/lib/kafka-streams-topology-design_v1.0.0-beta.3.excalidrawlib',
+    filename: 'kafka-streams-topology-design_v1.0.0.excalidrawlib',
+    download: 'https://raw.githubusercontent.com/thriving-dev/kafka-streams-topology-design/main/lib/kafka-streams-topology-design_v1.0.0.excalidrawlib',
     install: 'https://excalidraw.com/?addLibrary=https%3A%2F%2Flibraries.excalidraw.com%2Flibraries%2Fhartmut-co-uk%2Fkafka-streams-topology-design.excalidrawlib',
   },
   survey: undefined,
