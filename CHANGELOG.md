@@ -3,11 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 ## Version 1.0.0
-The Excalidraw component library contains *70 shapes*.
+The Excalidraw component library contains *72 shapes*.
 
 ### Notable changes
 
 #### New library components
+- Fundamentals
+  - **Processor Context**
+- Topics & Events
+  - **Tombstone**
 - Kafka Streams DSL
   - **windowedBy**
 - Windowing

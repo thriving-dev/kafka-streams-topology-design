@@ -61,26 +61,18 @@ The 'Key-Value Record' component usually is added to describe the type and conte
 It's commonly added for _sources_ & _sinks_, and whenever it changes. Further, it is also used
 in combination with [state stores](/notation/state-stores/).
 
-<LibraryComponent name="record-kv"
-                  width={110}
-                  title="Key-Value Record."
+<LibraryComponent name="record-kv" width={110} title="Key-Value Record."
                   description="<p>Describes the record key (k) and value (v). For generic types, it can be the name of an <i>identifier</i>. For complex objects, such as Avro or Protobuf, the <i>record</i> name is usually a good choice.</p>
                                <p>Compound string keys can be described like this: <code>{departureDate}_{flightNumber}</code></p>"/>
 
-<LibraryComponent name="record-kv-typed"
-                  width={111}
-                  title="Key-Value Record Typed."
+<LibraryComponent name="record-kv-typed" width={111} title="Key-Value Record Typed."
                   description="<br>Includes additional information on the data types for key and value. SerDes to be used can be resolved from these types."/>
 
-<LibraryComponent name="record-envelope"
-                  width={53}
-                  title="Record/Message/Event (Envelope)."
+<LibraryComponent name="record-envelope" width={53} title="Record/Message/Event (Envelope)."
                   description="<br>A simple envelope icon for specific/advanced documentation purposes, e.g. to highlight messages being processed or transmitted."/>
 
-<LibraryComponent name="tombstone"
-                  width={44}
-                  title="Tombstone."
-                  description="<br><i>Deletions</i> (<i>null</i> values) are called <b>tombstones</b> within the Kafka (Streams) context."/>
+<LibraryComponent name="tombstone" width={44} title="Tombstone."
+                  description="<br>Deletions (<i>null</i> values) are called <i>tombstones</i> within the Kafka context."/>
 
 <div class="[&_aside]:text-md">
   <Aside>

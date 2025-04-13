@@ -9,6 +9,8 @@ tableOfContents:
   maxHeadingLevel: 2
 ---
 
+import LibraryComponent from "../../../components/notation/LibraryComponent.astro";
+
 [//]: # (Unfortunately this is not working when manually deploying to vercel from local machine...)
 [//]: # (TODO: Find a better solution / deploy via GitHub Actions)
 [//]: # (import ChangelogContent from '../../../../../CHANGELOG.md';)
@@ -24,22 +26,25 @@ tableOfContents:
     All notable changes to this project will be documented in this file.
 
     ## Version 1.0.0
-    The Excalidraw component library contains *70 shapes*.
+    The Excalidraw component library contains *72 shapes*.
 
     ### Notable changes
 
     #### New library components
+    - Fundamentals
+      <LibraryComponent name="processor-context" width={140} description="The <b>Processor Context</b> is a wrapper component to visually group advanced PAPI (Processor API) features with the custom <a href='/notation/kafka-streams-dsl/#process'>Processor</a> they belong to. Examples: Custom State Stores, Punctuators." />
+    - Topics & Events
+      <LibraryComponent name="tombstone" width={44} title="Tombstone." description="<br>Deletions (<i>null</i> values) are called <i>tombstones</i> within the Kafka context."/>
     - Kafka Streams DSL
-      - **windowedBy**
+      <LibraryComponent name="dsl-windowed-by" width={88} description="<p><b>windowedBy</b> applies a time windowing strategy to a grouped stream, partitioning records into defined intervals for subsequent aggregations.</p>" operation="Stateful"/>
     - Windowing
       - Emit Strategy:
-        - **Emit onUpdate**
-        - **Emit onClose**
-      - **Suppressed until***
-        - (untilWindowCloses)
-        - (untilTimeLimit)
+        <LibraryComponent name="windowed-emit-on-update" width={117} description="<p><b>Emit on update</b> strategy emits a new, updated window result every time the aggregated state changes due to incoming records.</p>"/>
+        <LibraryComponent name="windowed-emit-on-close" width={103} description="<p><b>Emit on close</b> strategy emits the final result only once when the window is considered complete and closed.</p>"/>
+      - Suppressed (untilWindowCloses; untilTimeLimit)
+        <LibraryComponent name="windowed-suppressed" width={125} description="<p><b>Suppressed</b> is an operator that buffers intermediate results and only forwards the final aggregate once the window is complete (or after a defined grace period).</p>"/>
     - External Interfaces
-      - **External DB**
+      <LibraryComponent name="external-db" width={64} description="<b>External DB</b> can be used for highlighting integration or interaction with an external DB. This can e.g. be used to indicate Kafka Connect or other CDC data flows."/>
 
     #### Removed library components
     - External Interfaces
