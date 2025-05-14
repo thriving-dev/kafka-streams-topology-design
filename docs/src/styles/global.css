@@ -1,0 +1,296 @@
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@import '@astrojs/starlight-tailwind';
+
+@theme {
+    /*
+      Configure your Tailwind theme that will be used by Starlight.
+      https://starlight.astro.build/guides/css-and-tailwind/#styling-starlight-with-tailwind
+    */
+    /* Custom accent colors. */
+    --color-accent-50: var(--color-indigo-50);
+    --color-accent-100: var(--color-indigo-100);
+    --color-accent-200: var(--color-indigo-200);
+    --color-accent-300: var(--color-indigo-300);
+    --color-accent-400: var(--color-indigo-400);
+    --color-accent-500: var(--color-indigo-500);
+    --color-accent-600: var(--color-indigo-600);
+    --color-accent-700: var(--color-indigo-700);
+    --color-accent-800: var(--color-indigo-800);
+    --color-accent-900: var(--color-indigo-900);
+    --color-accent-950: var(--color-indigo-950);
+    /* Custom gray scale. */
+    --color-gray-50: var(--color-zinc-50);
+    --color-gray-100: var(--color-zinc-100);
+    --color-gray-200: var(--color-zinc-200);
+    --color-gray-300: var(--color-zinc-300);
+    --color-gray-400: var(--color-zinc-400);
+    --color-gray-500: var(--color-zinc-500);
+    --color-gray-600: var(--color-zinc-600);
+    --color-gray-700: var(--color-zinc-700);
+    --color-gray-800: var(--color-zinc-800);
+    --color-gray-900: var(--color-zinc-900);
+    --color-gray-950: var(--color-zinc-950);
+    --font-size-md: '15px';
+    /* Custom code font. */
+    /*--font-mono: 'IBM Plex Mono';*/
+}
+
+:root {
+    /* Use Tailwind-configured font families. */
+    --sl-color-accent-low: #17264f;
+    --sl-color-accent: #3369ff;
+    --sl-color-accent-high: #b3c7ff;
+    /*--sl-color-accent-low: #0f2a21;*/
+    /*--sl-color-accent: #007c61;*/
+    /*--sl-color-accent-high: #91cfb7;*/
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #efedeb;
+    --sl-color-gray-2: #c4c1bf;
+    --sl-color-gray-3: #8f8a86;
+    --sl-color-gray-4: #5c5753;
+    --sl-color-gray-5: #3b3733;
+    --sl-color-gray-6: #2a2622;
+    --sl-color-gray-7: #1c1914;
+    --sl-color-black: #1a1816;
+    --sl-color-bg-opt-1: #292524;
+    /* Light mode Starlight theme variables. */
+    &[data-theme='light'] {
+        --sl-color-accent-low: #cfd4fc;
+        --sl-color-accent: #3d50f5;
+        --sl-color-accent-high: #0f1c8a;
+        /*--sl-color-accent-low: #c6ddd4;*/
+        /*--sl-color-accent: #008438;*/
+        /*--sl-color-accent-high: #228e50;*/
+        --sl-color-white: #1b1714;
+        --sl-color-gray-1: #2d251e;
+        --sl-color-gray-2: #3e372f;
+        --sl-color-gray-3: #5f564e;
+        --sl-color-gray-4: #938a81;
+        --sl-color-gray-5: #c6c1bc;
+        --sl-color-gray-6: #edebe9;
+        --sl-color-gray-7: #f8f6f4;
+        --sl-color-black: #ffffff;
+        --sl-color-bg-opt-1: #f5f5f4;
+    }
+}
+
+/*!* Dark mode colors. *!*/
+/*:root {*/
+/*    --sl-color-accent-low: #17264f;*/
+/*    --sl-color-accent: #3369ff;*/
+/*    --sl-color-accent-high: #b3c7ff;*/
+/*    !*--sl-color-accent-low: #0f2a21;*!*/
+/*    !*--sl-color-accent: #007c61;*!*/
+/*    !*--sl-color-accent-high: #91cfb7;*!*/
+/*    --sl-color-white: #ffffff;*/
+/*    --sl-color-gray-1: #efedeb;*/
+/*    --sl-color-gray-2: #c4c1bf;*/
+/*    --sl-color-gray-3: #8f8a86;*/
+/*    --sl-color-gray-4: #5c5753;*/
+/*    --sl-color-gray-5: #3b3733;*/
+/*    --sl-color-gray-6: #2a2622;*/
+/*    --sl-color-gray-7: #1c1914;*/
+/*    --sl-color-black: #1a1816;*/
+/*    --sl-color-bg-opt-1: #292524;*/
+/*}*/
+
+/*!* Light mode colors. *!*/
+/*:root[data-theme='light'] {*/
+/*    --sl-color-accent-low: #cfd4fc;*/
+/*    --sl-color-accent: #3d50f5;*/
+/*    --sl-color-accent-high: #0f1c8a;*/
+/*    !*--sl-color-accent-low: #c6ddd4;*!*/
+/*    !*--sl-color-accent: #008438;*!*/
+/*    !*--sl-color-accent-high: #228e50;*!*/
+/*    --sl-color-white: #1b1714;*/
+/*    --sl-color-gray-1: #2d251e;*/
+/*    --sl-color-gray-2: #3e372f;*/
+/*    --sl-color-gray-3: #5f564e;*/
+/*    --sl-color-gray-4: #938a81;*/
+/*    --sl-color-gray-5: #c6c1bc;*/
+/*    --sl-color-gray-6: #edebe9;*/
+/*    --sl-color-gray-7: #f8f6f4;*/
+/*    --sl-color-black: #ffffff;*/
+/*    --sl-color-bg-opt-1: #f5f5f4;*/
+/*}*/
+
+/*@layer utilities {*/
+/*    !* Wire up Starlight theme to use Tailwind config. *!*/
+/*    :root {*/
+/*        !* Use Tailwind-configured font families. *!*/
+/*        --sl-color-accent-low: #17264f;*/
+/*        --sl-color-accent: #3369ff;*/
+/*        --sl-color-accent-high: #b3c7ff;*/
+/*        !*--sl-color-accent-low: #0f2a21;*!*/
+/*        !*--sl-color-accent: #007c61;*!*/
+/*        !*--sl-color-accent-high: #91cfb7;*!*/
+/*        --sl-color-white: #ffffff;*/
+/*        --sl-color-gray-1: #efedeb;*/
+/*        --sl-color-gray-2: #c4c1bf;*/
+/*        --sl-color-gray-3: #8f8a86;*/
+/*        --sl-color-gray-4: #5c5753;*/
+/*        --sl-color-gray-5: #3b3733;*/
+/*        --sl-color-gray-6: #2a2622;*/
+/*        --sl-color-gray-7: #1c1914;*/
+/*        --sl-color-black: #1a1816;*/
+/*        --sl-color-bg-opt-1: #292524;*/
+/*        !* Light mode Starlight theme variables. *!*/
+/*        &[data-theme='light'] {*/
+/*            --sl-color-accent-low: #cfd4fc;*/
+/*            --sl-color-accent: #3d50f5;*/
+/*            --sl-color-accent-high: #0f1c8a;*/
+/*            !*--sl-color-accent-low: #c6ddd4;*!*/
+/*            !*--sl-color-accent: #008438;*!*/
+/*            !*--sl-color-accent-high: #228e50;*!*/
+/*            --sl-color-white: #1b1714;*/
+/*            --sl-color-gray-1: #2d251e;*/
+/*            --sl-color-gray-2: #3e372f;*/
+/*            --sl-color-gray-3: #5f564e;*/
+/*            --sl-color-gray-4: #938a81;*/
+/*            --sl-color-gray-5: #c6c1bc;*/
+/*            --sl-color-gray-6: #edebe9;*/
+/*            --sl-color-gray-7: #f8f6f4;*/
+/*            --sl-color-black: #ffffff;*/
+/*            --sl-color-bg-opt-1: #f5f5f4;*/
+/*        }*/
+/*    }*/
+/*}*/
+
+
+/*
+Add additional Tailwind styles to this file, for example with @layer:
+https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
+*/
+
+.sidebar-pane {
+    @apply h-full !pb-[77px] h-auto;
+}
+
+.right-sidebar {
+    @apply h-full min-[1152px]:!pb-[77px];
+}
+
+.sidebar-content {
+    @apply h-auto;
+}
+
+.site-title {
+    @apply gap-3 text-[var(--sl-color-white)];
+}
+
+.social-icons::after {
+    display: none;
+}
+
+.tagline {
+    @apply text-lg lg:text-2xl;
+}
+
+h1 {
+    @apply text-[56px];
+}
+
+.action {
+    @apply rounded-lg px-3.5 md:px-4 py-2 md:py-2.5 font-medium !text-[var(--sl-color-white)];
+}
+
+.action.primary {
+    @apply !text-[var(--sl-color-black)];
+}
+
+.actions {
+    @apply gap-x-4 lg:gap-x-8 gap-y-4 flex-wrap justify-center min-[800px]:justify-normal;
+}
+
+.actions > .minimal {
+    @apply underline underline-offset-2;
+}
+
+a {
+    @apply underline underline-offset-1 decoration-1 text-[var(--sl-color-text-accent)] decoration-[#4f46e566] dark:decoration-[#c7d2fe66];
+}
+
+/* starlight always adds a <ContentPanel> for 'splash' template without 'hero'.
+ * This is a hack to hide the content-panel, without overriding the entire <Page> component...
+ */
+.content-panel:has(>div>div.hide-content-panel) {
+    @apply hidden;
+}
+
+.content-panel:has(>div>div.banner-content-panel) {
+    @apply py-4 sm:py-6 lg:py-8 bg-green-300;
+}
+
+body {
+    overscroll-behavior-y: none;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+code {
+    @apply rounded-sm;
+}
+
+.medium-zoom-overlay {
+    z-index: 70;
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+    opacity: 95%;
+}
+
+.medium-zoom-overlay + img {
+    z-index: 71;
+}
+
+
+/* Fancybox class customisations */
+.fancybox__slide {
+    @apply !p-4;
+}
+
+.fancybox-image {
+    @apply rounded-sm;
+}
+
+.f-carousel__thumbs {
+    @apply !mt-0 md:!mt-4;
+}
+
+.f-carousel__nav {
+    @apply !mt-0;
+}
+
+.f-carousel__slide {
+    @apply !mt-0 flex;
+}
+
+.f-button {
+    @apply !mt-0;
+}
+
+.f-carousel__dots {
+    @apply [&_button]:!mb-0;
+}
+
+.sl-link-button {
+    margin-inline-end: 0rem !important;
+    @apply font-medium;
+}
+
+.sl-link-button:not(:where(p *)) {
+    margin-block: 0rem !important;
+}
+
+.sl-link-button.secondary {
+    border: 1px solid;
+    border-color: unset !important;
+}
+
+/*astro-fancy-carousel {*/
+/*    @apply !h-[498px];*/
+/*}*/
