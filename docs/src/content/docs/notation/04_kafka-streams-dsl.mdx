@@ -86,11 +86,11 @@ operation="Stateless"/>
 <LibraryComponent name="dsl-merge" width={64} description="<p><b>merge</b> merges two or more KStreams into a single stream, combining records from all input streams into one output stream.</p>"
 operation="Stateless"/>
 
-### join; leftJoin; outerJoin
-<LibraryComponent name="dsl-join" width={64} description="<p><b>join</b> combines records from two KStreams or a KStream and a KTable, matching records with the same key within a defined time window.</p>"
+### join; leftJoin; outerJoin, (fk *join)
+<LibraryComponent name="dsl-join" width={64} description="<p><b>join</b>/<b>leftJoin</b>/<b>outerJoin</b> combines records from two KStreams or a KStream and a KTable, matching records with the same key within a defined time window.</p>"
 operation="Stateful"/>
 
-<LibraryComponent name="dsl-join-key-changing" width={84} description="<p><b>join (key-changing)</b> allows records with non-matching keys to be joined by applying a custom key-changing logic, enabling joins beyond simple key equality.</p>"
+<LibraryComponent name="dsl-join-key-changing" width={84} description="<p><b>fk join</b>/<b>leftJoin</b>/<b>outerJoin</b> <b>(*foreign-key join, key-changing)</b> allows records with non-matching keys to be joined by applying a <i>foreignKeyExtractor</i>.</p>"
 operation="Stateful, key-changing"/>
 
 ### repartition

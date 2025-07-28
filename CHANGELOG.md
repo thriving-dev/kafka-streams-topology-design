@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.0
+The Excalidraw component library contains *72 shapes*.
+
+### Notable changes
+
+#### New library components
+- Fundamentals
+  - **Processor Context**
+- Topics & Events
+  - **Tombstone**
+- Kafka Streams DSL
+  - **windowedBy**
+- Windowing
+  - Emit Strategy: 
+    - **Emit onUpdate**
+    - **Emit onClose**
+  - **Suppressed until***
+    - (untilWindowCloses)
+    - (untilTimeLimit)
+- External Interfaces
+  - **External DB**
+
+#### Removed library components
+- External Interfaces
+  - API (alternative 2)
+  - External System (alternative 2)
+
+#### Improved Arrow Linking
+Multiple components, most importantly topics and state stores, have been updated to allow easy linking/docking of arrows. This is particularly useful when using _elbow type_ arrows.
+
+### Updates to the Documentation
+
+* Improves existing documentation (Notation) 
+  * Reflects all updated and new components.
+  * Improved descriptions.
+
+
 ## Version 1.0.0-beta.3
 The Excalidraw component library contains *67 shapes*.
 
