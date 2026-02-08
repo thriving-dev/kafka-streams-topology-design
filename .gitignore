@@ -7,3 +7,10 @@
 .vercel
 .idea
 .vscode
+
+# scratch / draft files
+docs/x.pnpm-workspace.yaml
+lib/kafka-streams-topology-design_v1.0.0X.excalidrawlib
+lib/kafka-streams-topology-design_v1.0.0Y.excalidrawlib
+lib/kafka-streams-topology-design_v1.0.0Z.excalidrawlib
+scripts/
