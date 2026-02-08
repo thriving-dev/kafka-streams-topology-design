@@ -3,7 +3,7 @@ import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
 import icon from "astro-icon";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,10 +15,10 @@ export default defineConfig({
       dark: '/src/assets/logo1_M.png',
       replacesTitle: false,
     },
-    social: {
-      linkedin: 'https://www.linkedin.com/in/hartmut-co-uk/',
-      github: 'https://github.com/thriving-dev/kafka-streams-topology-design',
-    },
+    social: [
+      { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/hartmut-co-uk/' },
+      { icon: 'github', label: 'GitHub', href: 'https://github.com/thriving-dev/kafka-streams-topology-design' },
+    ],
     sidebar: [{
       label: 'Guide',
       autogenerate: {
