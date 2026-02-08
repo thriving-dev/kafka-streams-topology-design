@@ -7,6 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "astro": "astro"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.3",
+    "@playwright/test": "^1.58.2",
     "astro-icon": "^1.1.5",
     "medium-zoom": "^1.1.0",
     "slugify": "^1.6.6",
